@@ -15,10 +15,15 @@ final class CreateOrderTableViewCell: UITableViewCell {
 
     // MARK: - Declarations
 
+    private weak var datePickerDelegate: DatePickerDelegate?
+
     static let cellId = "CreateOrderTableViewCell"
 
     private let titleLabel = UILabel()
     let textField = CreateOrderTextField()
+    private let switchToggle = UISwitch()
+    private let datePicker = UIDatePicker()
+    private let pickerView = UIPickerView()
     private let stackView = UIStackView()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -31,27 +36,69 @@ final class CreateOrderTableViewCell: UITableViewCell {
         configureUI()
     }
 
-    func configure(for viewModel: CreateOrder.FormDataSource, textFieldDelegate: UITextFieldDelegate) {
+    func configure(
+        for viewModel: CreateOrder.FormDataSource,
+        textFieldDelegate: UITextFieldDelegate,
+        pickerViewDelegate: UIPickerViewDelegate,
+        datePickerDelegate: DatePickerDelegate
+    ) {
         self.viewModel = viewModel
         textField.delegate = textFieldDelegate
+        pickerView.delegate = pickerViewDelegate
+        self.datePickerDelegate = datePickerDelegate
     }
 
     private func configureData() {
         guard let viewModel = viewModel else { return }
 
         let title = viewModel.title
-        let inputFieldTag = viewModel.inputFieldTag
+        let inputType = viewModel.inputType
 
         titleLabel.text = title
-        textField.tag = inputFieldTag
+
+        if let textFieldInputTag = viewModel.inputTag {
+            textField.tag = textFieldInputTag
+        }
+
+        setInputComponentVisibility(for: inputType)
+    }
+
+    private func setInputComponentVisibility(for inputType: CreateOrder.FormDataSource.InputType) {
+        switch inputType {
+            case .textField:
+                textField.isHidden = false
+                switchToggle.isHidden = true
+                datePicker.isHidden = true
+                textField.inputView = nil
+            case .switchToggle:
+                textField.isHidden = true
+                switchToggle.isHidden = false
+                datePicker.isHidden = true
+                textField.inputView = nil
+            case .datePicker:
+                textField.isHidden = true
+                switchToggle.isHidden = true
+                datePicker.isHidden = false
+                textField.inputView = nil
+            case .pickerView:
+                textField.isHidden = false
+                switchToggle.isHidden = true
+                datePicker.isHidden = true
+                textField.inputView = pickerView
+        }
+    }
+
+    @objc private func handleDatePickerValueChanged(_ sender: UIDatePicker) {
+        datePickerDelegate?.datePickerValueChanged(sender)
     }
 }
 
-// MARK: - Configuration
+// MARK: - UI Configuration (UI Creation)
 private extension CreateOrderTableViewCell {
     func configureUI() {
         configureCellStyle()
         configureTitleLabel()
+        configureDatePicker()
         configureStackView()
     }
 
@@ -67,6 +114,14 @@ private extension CreateOrderTableViewCell {
         titleLabel.setContentHuggingPriority(newPriority, for: .horizontal)
     }
 
+    func configureDatePicker() {
+        let today = Date()
+        datePicker.datePickerMode = .date
+        datePicker.minimumDate = today
+
+        datePicker.addTarget(self, action: #selector(handleDatePickerValueChanged(_:)), for: .valueChanged)
+    }
+
     func configureStackView() {
         stackView.axis = .horizontal
         stackView.distribution = .fill
@@ -75,6 +130,8 @@ private extension CreateOrderTableViewCell {
 
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(textField)
+        stackView.addArrangedSubview(switchToggle)
+        stackView.addArrangedSubview(datePicker)
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
 

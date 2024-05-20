@@ -11,16 +11,24 @@ import UIKit
 // MARK: - CreateOrderDisplayLogic Protocol
 protocol CreateOrderDisplayLogic: AnyObject {
     func displaySomething(viewModel: CreateOrder.Something.ViewModel)
+    func displayExpirationDate(viewModel: CreateOrder.FormatExpirationDate.ViewModel)
 }
 
 // MARK: - CreateOrderViewController Class
 final class CreateOrderViewController: UITableViewController {
-    private var interactor: CreateOrderBusinessLogic?
-    private var router: (CreateOrderRoutingLogic & CreateOrderDataPassing)?
-
     // MARK: - Declarations
+
+    private var interactor: CreateOrderBusinessLogic?
+
+    private var router: (CreateOrderRoutingLogic & CreateOrderDataPassing)?
     
-    private typealias Section = Constants.Scenes.CreateOrderConstants.Section
+    private enum Section: String, CaseIterable {
+        case customerContactInfo = "Customer Contact Info"
+        case shipmentAddress = "Shipment Address"
+        case shipmentMethod = "Shipment Method"
+        case paymentInformation = "Payment Information"
+        case billingAddress = "Billing Address"
+    }
 
     private typealias DataSource = UITableViewDiffableDataSource<
         Section,
@@ -32,9 +40,9 @@ final class CreateOrderViewController: UITableViewController {
         CreateOrder.FormDataSource
     >
 
-    private var nextCellIndexPath: IndexPath?
-
     private var textFields: [CreateOrderTextField] = []
+
+    private var pickerViewTextField: UITextField?
 
     // MARK: - Table View
 
@@ -79,18 +87,43 @@ final class CreateOrderViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let nextIndexPath = tableView.nextIndexPath(for: indexPath)
-        nextCellIndexPath = nextIndexPath
+        guard let cell = tableView.cellForRow(at: indexPath) as? CreateOrderTableViewCell else { return }
+
+        guard let viewModel = cell.viewModel else { return }
+
+        let inputType = viewModel.inputType
+
+        let isTextFieldInputType = inputType == .textField
+
+        let textField = cell.textField
+
+        guard isTextFieldInputType else { return }
+
+        let isCurrentTextField = textField.isDescendant(of: cell)
+
+        guard isCurrentTextField else { return }
+
+        textField.becomeFirstResponder()
     }
 
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cell = cell as? CreateOrderTableViewCell else { return }
-        
-        let isTextFieldInTextFields = textFields.contains(cell.textField)
+
+        guard let viewModel = cell.viewModel else { return }
+
+        let inputType = viewModel.inputType
+
+        let isSwitchToggleInputType = inputType == .switchToggle
+
+        guard !isSwitchToggleInputType else { return }
+
+        let textField = cell.textField
+
+        let isTextFieldInTextFields = textFields.contains(textField)
 
         guard !isTextFieldInTextFields else { return }
-        
-        textFields.append(cell.textField)
+
+        textFields.append(textField)
     }
 
     // MARK: - Setup
@@ -100,10 +133,13 @@ final class CreateOrderViewController: UITableViewController {
         let interactor = CreateOrderInteractor()
         let presenter = CreateOrderPresenter()
         let router = CreateOrderRouter()
+
         viewController.interactor = interactor
         viewController.router = router
+
         interactor.presenter = presenter
         presenter.viewController = viewController
+        
         router.viewController = viewController
         router.dataStore = interactor
     }
@@ -126,6 +162,11 @@ final class CreateOrderViewController: UITableViewController {
         interactor?.doSomething(request: request)
     }
 
+    private func formatExpirationDate(date: Date) {
+        let request = CreateOrder.FormatExpirationDate.Request(date: date)
+        interactor?.formatExpirationDate(request: request)
+    }
+
     // MARK: - Helpers
 
     private func loadTableViewData() {
@@ -143,13 +184,12 @@ final class CreateOrderViewController: UITableViewController {
     }
 
     private func sortTextFields() {
-        let isTextFieldsSorted = textFields.isSorted()
 
-        guard !isTextFieldsSorted else { return }
+        let isTextFieldsEmpty = textFields.isEmpty
 
-        textFields.sort {
-            $0.tag < $1.tag
-        }
+        guard !isTextFieldsEmpty else { return }
+
+        textFields.sort { $0.tag < $1.tag }
     }
 
     private func handleKeyboardResponder(for textField: CreateOrderTextField) {
@@ -168,23 +208,76 @@ final class CreateOrderViewController: UITableViewController {
 // MARK: - CreateOrderDisplayLogic Extension
 extension CreateOrderViewController: CreateOrderDisplayLogic {
     func displaySomething(viewModel: CreateOrder.Something.ViewModel) {}
+
+    func displayExpirationDate(viewModel: CreateOrder.FormatExpirationDate.ViewModel) {
+        let dateString = viewModel.dateString
+        print("Date String::", dateString)
+    }
 }
 
+// MARK: - UITextFieldDelegate
 extension CreateOrderViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         sortTextFields()
+
+        return true
+    }
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        let inputView = textField.inputView
+
+        let isPickerView = inputView is UIPickerView
+
+        pickerViewTextField = isPickerView ? textField : nil
+    }
+
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        pickerViewTextField = nil
+
         return true
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let textField = textField as! CreateOrderTextField
+
         handleKeyboardResponder(for: textField)
+
         return true
     }
 }
 
-// MARK: - Configuration
-extension CreateOrderViewController {
+// MARK: - UIPickerViewDelegate
+extension CreateOrderViewController: UIPickerViewDelegate {}
+
+// MARK: - UIPickerViewDataSource
+extension CreateOrderViewController: UIPickerViewDataSource {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        interactor?.shippingMethods.count ?? 0
+    }
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        interactor?.shippingMethods[row]
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        pickerViewTextField?.text = interactor?.shippingMethods[row]
+    }
+}
+
+// MARK: - DatePickerDelegate
+extension CreateOrderViewController: DatePickerDelegate {
+    func datePickerValueChanged(_ sender: UIDatePicker) {
+        let date = sender.date
+        formatExpirationDate(date: date)
+    }
+}
+
+// MARK: - UI Configuration (UI Creation)
+private extension CreateOrderViewController {
     func configureUI() {
         configureTableViewSection()
         configureTableViewCellRegistration()
@@ -207,7 +300,12 @@ extension CreateOrderViewController {
                     return UITableViewCell()
                 }
 
-                cell.configure(for: viewModel, textFieldDelegate: self)
+                cell.configure(
+                    for: viewModel,
+                    textFieldDelegate: self,
+                    pickerViewDelegate: self,
+                    datePickerDelegate: self
+                )
 
                 return cell
             }
