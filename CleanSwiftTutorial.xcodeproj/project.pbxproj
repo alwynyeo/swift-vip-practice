@@ -10,6 +10,7 @@
 		A41898752BF29D65002511D9 /* CreateOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41898742BF29D65002511D9 /* CreateOrderTableViewCell.swift */; };
 		A418987A2BF3E93A002511D9 /* CreateOrderConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41898792BF3E93A002511D9 /* CreateOrderConstants.swift */; };
 		A45ACBDF2BF4BC310012EF19 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45ACBDE2BF4BC310012EF19 /* Constants.swift */; };
+		A482EF582BFBA0D6004B129B /* CreateOrderViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A482EF572BFBA0D6004B129B /* CreateOrderViewController+UI.swift */; };
 		A4C16D7D2BFA74C800E799BC /* DatePicker+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C16D7C2BFA74C800E799BC /* DatePicker+Protocol.swift */; };
 		A4EA073B2BC2EAF9008D52B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA073A2BC2EAF9008D52B2 /* AppDelegate.swift */; };
 		A4EA073D2BC2EAF9008D52B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA073C2BC2EAF9008D52B2 /* SceneDelegate.swift */; };
@@ -51,6 +52,7 @@
 		A41898742BF29D65002511D9 /* CreateOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrderTableViewCell.swift; sourceTree = "<group>"; };
 		A41898792BF3E93A002511D9 /* CreateOrderConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrderConstants.swift; sourceTree = "<group>"; };
 		A45ACBDE2BF4BC310012EF19 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		A482EF572BFBA0D6004B129B /* CreateOrderViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateOrderViewController+UI.swift"; sourceTree = "<group>"; };
 		A4C16D7C2BFA74C800E799BC /* DatePicker+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePicker+Protocol.swift"; sourceTree = "<group>"; };
 		A4EA07372BC2EAF9008D52B2 /* CleanSwiftTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanSwiftTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4EA073A2BC2EAF9008D52B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -103,18 +105,19 @@
 		A41898722BF29D29002511D9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				A482EF542BFBA0A1004B129B /* CreateOrderViewController+UI */,
 				A4F33F472BF66C1500EEE85E /* CreateOrderTextField */,
-				A41898732BF29D3B002511D9 /* CreateOrderTableView */,
+				A41898732BF29D3B002511D9 /* CreateOrderTableViewCell */,
 			);
 			path = UI;
 			sourceTree = "<group>";
 		};
-		A41898732BF29D3B002511D9 /* CreateOrderTableView */ = {
+		A41898732BF29D3B002511D9 /* CreateOrderTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				A41898742BF29D65002511D9 /* CreateOrderTableViewCell.swift */,
 			);
-			path = CreateOrderTableView;
+			path = CreateOrderTableViewCell;
 			sourceTree = "<group>";
 		};
 		A41898762BF2ADED002511D9 /* Constants */ = {
@@ -131,6 +134,14 @@
 				A45ACBDE2BF4BC310012EF19 /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		A482EF542BFBA0A1004B129B /* CreateOrderViewController+UI */ = {
+			isa = PBXGroup;
+			children = (
+				A482EF572BFBA0D6004B129B /* CreateOrderViewController+UI.swift */,
+			);
+			path = "CreateOrderViewController+UI";
 			sourceTree = "<group>";
 		};
 		A4C16D7B2BFA743C00E799BC /* Protocols */ = {
@@ -401,6 +412,7 @@
 				A4EA073F2BC2EAF9008D52B2 /* ViewController.swift in Sources */,
 				A4EA073B2BC2EAF9008D52B2 /* AppDelegate.swift in Sources */,
 				A4EA073D2BC2EAF9008D52B2 /* SceneDelegate.swift in Sources */,
+				A482EF582BFBA0D6004B129B /* CreateOrderViewController+UI.swift in Sources */,
 				A4F33F442BF6690900EEE85E /* Array+Extension.swift in Sources */,
 				A4C16D7D2BFA74C800E799BC /* DatePicker+Protocol.swift in Sources */,
 				A45ACBDF2BF4BC310012EF19 /* Constants.swift in Sources */,

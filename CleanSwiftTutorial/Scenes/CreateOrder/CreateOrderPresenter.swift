@@ -22,7 +22,7 @@ final class CreateOrderPresenter {
 
     private var dateFormatter: DateFormatter?
 
-    // MARK: - Initialization
+    // MARK: - Object Lifecycle
 
     init() {
         dateFormatter = DateFormatter()

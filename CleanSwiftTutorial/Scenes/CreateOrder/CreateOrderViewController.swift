@@ -46,7 +46,7 @@ final class CreateOrderViewController: UITableViewController {
 
     // MARK: - Table View
 
-    private var dataSource: DataSource!
+    private lazy var dataSource = makeDataSource()
 
     // MARK: - Object Lifecycle
 
@@ -169,6 +169,26 @@ final class CreateOrderViewController: UITableViewController {
 
     // MARK: - Helpers
 
+    private func makeDataSource() -> DataSource {
+        DataSource(
+            tableView: tableView,
+            cellProvider: { (tableView, indexPath, viewModel) -> UITableViewCell? in
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: CreateOrderTableViewCell.cellId, for: indexPath) as? CreateOrderTableViewCell else {
+                    return UITableViewCell()
+                }
+
+                cell.configure(
+                    for: viewModel,
+                    textFieldDelegate: self,
+                    pickerViewDelegate: self,
+                    datePickerDelegate: self
+                )
+
+                return cell
+            }
+        )
+    }
+
     private func loadTableViewData() {
         var snapshot = Snapshot()
 
@@ -273,42 +293,5 @@ extension CreateOrderViewController: DatePickerDelegate {
     func datePickerValueChanged(_ sender: UIDatePicker) {
         let date = sender.date
         formatExpirationDate(date: date)
-    }
-}
-
-// MARK: - UI Configuration (UI Creation)
-private extension CreateOrderViewController {
-    func configureUI() {
-        configureTableViewSection()
-        configureTableViewCellRegistration()
-        configureTableViewDataSource()
-    }
-
-    func configureTableViewSection() {
-        tableView.sectionHeaderTopPadding = 0
-    }
-
-    func configureTableViewCellRegistration() {
-        tableView.register(CreateOrderTableViewCell.self, forCellReuseIdentifier: CreateOrderTableViewCell.cellId)
-    }
-
-    func configureTableViewDataSource() {
-        dataSource = DataSource(
-            tableView: tableView,
-            cellProvider: { (tableView, indexPath, viewModel) -> UITableViewCell? in
-                guard let cell = tableView.dequeueReusableCell(withIdentifier: CreateOrderTableViewCell.cellId, for: indexPath) as? CreateOrderTableViewCell else {
-                    return UITableViewCell()
-                }
-
-                cell.configure(
-                    for: viewModel,
-                    textFieldDelegate: self,
-                    pickerViewDelegate: self,
-                    datePickerDelegate: self
-                )
-
-                return cell
-            }
-        )
     }
 }

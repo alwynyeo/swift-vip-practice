@@ -8,6 +8,8 @@
 import UIKit
 
 final class CreateOrderTextField: UITextField {
+    // MARK: - Object Lifecycle
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureUI()
@@ -17,11 +19,10 @@ final class CreateOrderTextField: UITextField {
         super.init(coder: coder)
         configureUI()
     }
-}
 
-// MARK: - Configuration
-private extension CreateOrderTextField {
-    func configureUI() {
+    // MARK: - Helpers
+
+    private func configureUI() {
         borderStyle = .roundedRect
     }
 }

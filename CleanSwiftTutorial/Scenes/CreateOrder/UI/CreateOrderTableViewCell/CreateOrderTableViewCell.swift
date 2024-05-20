@@ -8,16 +8,15 @@
 import UIKit
 
 final class CreateOrderTableViewCell: UITableViewCell {
+    // MARK: - Declarations
+
+    static let cellId = "CreateOrderTableViewCell"
+
+    private weak var datePickerDelegate: DatePickerDelegate?
 
     private(set) var viewModel: CreateOrder.FormDataSource? {
         didSet { configureData() }
     }
-
-    // MARK: - Declarations
-
-    private weak var datePickerDelegate: DatePickerDelegate?
-
-    static let cellId = "CreateOrderTableViewCell"
 
     private let titleLabel = UILabel()
     let textField = CreateOrderTextField()
@@ -25,6 +24,8 @@ final class CreateOrderTableViewCell: UITableViewCell {
     private let datePicker = UIDatePicker()
     private let pickerView = UIPickerView()
     private let stackView = UIStackView()
+
+    // MARK: - Object Lifecycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -35,6 +36,8 @@ final class CreateOrderTableViewCell: UITableViewCell {
         super.init(coder: coder)
         configureUI()
     }
+
+    // MARK: - Helpers
 
     func configure(
         for viewModel: CreateOrder.FormDataSource,
