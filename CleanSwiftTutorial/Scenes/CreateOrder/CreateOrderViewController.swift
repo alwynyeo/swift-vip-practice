@@ -172,9 +172,13 @@ final class CreateOrderViewController: UITableViewController {
     private func makeDataSource() -> DataSource {
         DataSource(
             tableView: tableView,
-            cellProvider: { (tableView, indexPath, viewModel) -> UITableViewCell? in
+            cellProvider: { [weak self] (tableView, indexPath, viewModel) -> UITableViewCell? in
+                let defaultCell = UITableViewCell()
+
+                guard let self else { return defaultCell }
+
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: CreateOrderTableViewCell.cellId, for: indexPath) as? CreateOrderTableViewCell else {
-                    return UITableViewCell()
+                    return defaultCell
                 }
 
                 cell.configure(
