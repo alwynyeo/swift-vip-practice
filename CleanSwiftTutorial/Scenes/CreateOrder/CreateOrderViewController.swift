@@ -64,7 +64,6 @@ final class CreateOrderViewController: UITableViewController {
 
     override func loadView() {
         super.loadView()
-        navigationItem.title = "Create Order"
         configureUI()
     }
 
@@ -294,8 +293,8 @@ extension CreateOrderViewController: UIPickerViewDataSource {
 
 // MARK: - DatePickerDelegate
 extension CreateOrderViewController: DatePickerDelegate {
-    func datePickerValueChanged(_ sender: UIDatePicker) {
-        let date = sender.date
+    func datePickerValueChanged(_ datePicker: UIDatePicker) {
+        let date = datePicker.date
         formatExpirationDate(date: date)
     }
 }

@@ -8,5 +8,5 @@
 import UIKit
 
 protocol DatePickerDelegate: AnyObject {
-    func datePickerValueChanged(_ sender: UIDatePicker)
+    func datePickerValueChanged(_ datePicker: UIDatePicker)
 }

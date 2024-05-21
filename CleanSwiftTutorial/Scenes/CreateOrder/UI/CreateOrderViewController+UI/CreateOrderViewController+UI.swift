@@ -8,15 +8,16 @@
 // MARK: - Programmatic UI Configuration
 extension CreateOrderViewController {
     func configureUI() {
-        configureTableViewSection()
-        configureTableViewCellRegistration()
+        configureNavigationBar()
+        configureTableView()
     }
 
-    func configureTableViewSection() {
+    func configureNavigationBar() {
+        navigationItem.title = "Create Order"
+    }
+
+    func configureTableView() {
         tableView.sectionHeaderTopPadding = 0
-    }
-
-    func configureTableViewCellRegistration() {
         tableView.register(CreateOrderTableViewCell.self, forCellReuseIdentifier: CreateOrderTableViewCell.cellId)
     }
 }

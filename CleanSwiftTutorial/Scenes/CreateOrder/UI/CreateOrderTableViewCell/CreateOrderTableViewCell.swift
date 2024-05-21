@@ -91,8 +91,8 @@ final class CreateOrderTableViewCell: UITableViewCell {
         }
     }
 
-    @objc private func handleDatePickerValueChanged(_ sender: UIDatePicker) {
-        datePickerDelegate?.datePickerValueChanged(sender)
+    private func handleDatePickerValueChanged() {
+        datePickerDelegate?.datePickerValueChanged(datePicker)
     }
 }
 
@@ -119,10 +119,16 @@ private extension CreateOrderTableViewCell {
 
     func configureDatePicker() {
         let today = Date()
+        let action = UIAction(
+            handler: { [weak self] action in
+                guard let self else { return }
+                handleDatePickerValueChanged()
+            }
+        )
+
         datePicker.datePickerMode = .date
         datePicker.minimumDate = today
-
-        datePicker.addTarget(self, action: #selector(handleDatePickerValueChanged(_:)), for: .valueChanged)
+        datePicker.addAction(action, for: .valueChanged)
     }
 
     func configureStackView() {
