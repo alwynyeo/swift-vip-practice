@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let frame = windowScene.coordinateSpace.bounds
-        let rootViewController = CreateOrderViewController(nibName: nil, bundle: nil)
+        let rootViewController = ListOrderViewController(nibName: nil, bundle: nil)
         let navigationController = UINavigationController(rootViewController: rootViewController)
         window = UIWindow(windowScene: windowScene)
         window?.frame = frame
