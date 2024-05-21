@@ -15,4 +15,16 @@ enum ListOrder {
         
         struct ViewModel {}
     }
+
+    enum FetchOrder {
+        struct Request {}
+
+        struct Response {
+            let orders: [Order]
+        }
+
+        struct ViewModel {
+            let orders: [Order]
+        }
+    }
 }

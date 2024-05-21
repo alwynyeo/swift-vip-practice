@@ -42,7 +42,7 @@ final class ListOrderViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        doSomething()
+        fetchOrders()
     }
 
     // MARK: - Override Parent Methods
@@ -78,9 +78,9 @@ final class ListOrderViewController: UITableViewController {
 
     // MARK: - Interactor Logic
 
-    private func doSomething() {
-        let request = ListOrder.Something.Request()
-        interactor?.doSomething(request: request)
+    private func fetchOrders() {
+        let request = ListOrder.FetchOrder.Request()
+        interactor?.fetchOrders(request: request)
     }
 
     // MARK: - Helpers
@@ -89,36 +89,4 @@ final class ListOrderViewController: UITableViewController {
 // MARK: - ListOrderDisplayLogic Extension
 extension ListOrderViewController: ListOrderDisplayLogic {
     func displaySomething(viewModel: ListOrder.Something.ViewModel) {}
-}
-
-// MARK: - Programmatic UI Configuration
-private extension ListOrderViewController {
-    func configureUI() {
-        configureNavigationBar()
-        configureTableView()
-    }
-
-    func configureNavigationBar() {
-        let primaryAction = UIAction(
-            handler: { [weak self] action in
-                guard let self else { return }
-                let createOrderController = CreateOrderViewController(nibName: nil, bundle: nil)
-                navigationController?.pushViewController(createOrderController, animated: true)
-            }
-        )
-
-        let plusIcon = UIImage(systemName: "plus")
-
-        let rightBarButtonItem = UIBarButtonItem(
-            image: plusIcon,
-            primaryAction: primaryAction
-        )
-
-        navigationItem.title = "List Order"
-        navigationItem.rightBarButtonItem = rightBarButtonItem
-    }
-
-    func configureTableView() {
-        tableView.backgroundColor = .red
-    }
 }

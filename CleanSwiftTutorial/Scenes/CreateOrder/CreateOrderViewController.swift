@@ -73,6 +73,10 @@ final class CreateOrderViewController: UITableViewController {
         doSomething()
     }
 
+    deinit {
+        print("Deinit - CreateOrderViewController")
+    }
+
     // MARK: - Override Parent Methods
 
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

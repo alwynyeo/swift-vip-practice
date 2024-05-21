@@ -29,9 +29,9 @@ final class CreateOrderInteractor {
 
     var shippingMethods: [String] {
         [
-            "Standard Shipping",
-            "Two-Day Shipping",
-            "One-Day Shipping",
+            Order.ShipmentMethod(speed: .standard).title,
+            Order.ShipmentMethod(speed: .oneDay).title,
+            Order.ShipmentMethod(speed: .twoDay).title,
         ]
     }
 }

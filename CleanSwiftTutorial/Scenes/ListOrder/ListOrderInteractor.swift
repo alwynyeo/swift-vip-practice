@@ -8,7 +8,7 @@
 
 // MARK: - ListOrderBusinessLogic Protocol
 protocol ListOrderBusinessLogic {
-    func doSomething(request: ListOrder.Something.Request)
+    func fetchOrders(request: ListOrder.FetchOrder.Request)
 }
 
 // MARK: - ListOrderDataStore Protocol
@@ -21,22 +21,41 @@ final class ListOrderInteractor {
     // MARK: - Declarations
 
     var presenter: ListOrderPresentationLogic?
+
     var worker: ListOrderWorker?
-    //  var name: String = ""
 
     // MARK: - Object Lifecycle
 
-    init() {}
+    init() {
+        let worker = OrderMockWorker()
+        self.worker = ListOrderWorker(worker: worker)
+    }
+
+    // MARK: - Helpers
+
+    private func presentFetchedOrders(orders: [Order]) {
+        let response = ListOrder.FetchOrder.Response(orders: orders)
+        presenter?.presentFetchedOrders(response: response)
+    }
+
+    deinit {
+        print("deinit list")
+    }
 }
 
 // MARK: - ListOrderBusinessLogic Extension
 extension ListOrderInteractor: ListOrderBusinessLogic {
-    func doSomething(request: ListOrder.Something.Request) {
-        worker = ListOrderWorker()
-        worker?.doSomeWork()
-        
-        let response = ListOrder.Something.Response()
-        presenter?.presentSomething(response: response)
+    func fetchOrders(request: ListOrder.FetchOrder.Request) {
+        worker?.fetchOrders(completion: { [weak self] result in
+            guard let self else { return  }
+
+            switch result {
+                case .success(let orders):
+                    presentFetchedOrders(orders: orders)
+                case .failure(let error):
+                    print(error)
+            }
+        })
     }
 }
 

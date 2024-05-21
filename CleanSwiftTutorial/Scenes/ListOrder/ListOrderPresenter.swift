@@ -8,7 +8,7 @@
 
 // MARK: - ListOrderPresentationLogic Protocol
 protocol ListOrderPresentationLogic {
-    func presentSomething(response: ListOrder.Something.Response)
+    func presentFetchedOrders(response: ListOrder.FetchOrder.Response)
 }
 
 // MARK: - ListOrderPresenter Class
@@ -24,8 +24,7 @@ final class ListOrderPresenter {
 
 // MARK: - ListOrderPresentationLogic Extension
 extension ListOrderPresenter: ListOrderPresentationLogic {
-    func presentSomething(response: ListOrder.Something.Response) {
-        let viewModel = ListOrder.Something.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
+    func presentFetchedOrders(response: ListOrder.FetchOrder.Response) {
+        print(response.orders.count)
     }
 }

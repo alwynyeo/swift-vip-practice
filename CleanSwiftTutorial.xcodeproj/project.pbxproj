@@ -15,6 +15,10 @@
 		A42D3A522BFC831C00B3F86F /* ListOrderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D3A4C2BFC831C00B3F86F /* ListOrderModels.swift */; };
 		A42D3A532BFC831C00B3F86F /* ListOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D3A4D2BFC831C00B3F86F /* ListOrderViewController.swift */; };
 		A42D3A542BFC831C00B3F86F /* ListOrderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D3A4E2BFC831C00B3F86F /* ListOrderInteractor.swift */; };
+		A42D3AA02BFCA31E00B3F86F /* ListOrderViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D3A9F2BFCA31E00B3F86F /* ListOrderViewController+UI.swift */; };
+		A42D3AA62BFCB08400B3F86F /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D3AA52BFCB08400B3F86F /* Order.swift */; };
+		A42D3AA92BFD047100B3F86F /* OrderMockStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D3AA82BFD047100B3F86F /* OrderMockStore.swift */; };
+		A42D3AAB2BFD1BF400B3F86F /* OrderMockWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D3AAA2BFD1BF400B3F86F /* OrderMockWorker.swift */; };
 		A45ACBDF2BF4BC310012EF19 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45ACBDE2BF4BC310012EF19 /* Constants.swift */; };
 		A482EF582BFBA0D6004B129B /* CreateOrderViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A482EF572BFBA0D6004B129B /* CreateOrderViewController+UI.swift */; };
 		A4C16D7D2BFA74C800E799BC /* DatePicker+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C16D7C2BFA74C800E799BC /* DatePicker+Protocol.swift */; };
@@ -63,6 +67,10 @@
 		A42D3A4C2BFC831C00B3F86F /* ListOrderModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOrderModels.swift; sourceTree = "<group>"; };
 		A42D3A4D2BFC831C00B3F86F /* ListOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOrderViewController.swift; sourceTree = "<group>"; };
 		A42D3A4E2BFC831C00B3F86F /* ListOrderInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOrderInteractor.swift; sourceTree = "<group>"; };
+		A42D3A9F2BFCA31E00B3F86F /* ListOrderViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListOrderViewController+UI.swift"; sourceTree = "<group>"; };
+		A42D3AA52BFCB08400B3F86F /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		A42D3AA82BFD047100B3F86F /* OrderMockStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMockStore.swift; sourceTree = "<group>"; };
+		A42D3AAA2BFD1BF400B3F86F /* OrderMockWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMockWorker.swift; sourceTree = "<group>"; };
 		A45ACBDE2BF4BC310012EF19 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A482EF572BFBA0D6004B129B /* CreateOrderViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateOrderViewController+UI.swift"; sourceTree = "<group>"; };
 		A4C16D7C2BFA74C800E799BC /* DatePicker+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePicker+Protocol.swift"; sourceTree = "<group>"; };
@@ -151,6 +159,7 @@
 		A42D3A482BFC82AC00B3F86F /* ListOrder */ = {
 			isa = PBXGroup;
 			children = (
+				A42D3A9E2BFCA30B00B3F86F /* UI */,
 				A42D3A492BFC831C00B3F86F /* ListOrderPresenter.swift */,
 				A42D3A4A2BFC831C00B3F86F /* ListOrderWorker.swift */,
 				A42D3A4B2BFC831C00B3F86F /* ListOrderRouter.swift */,
@@ -159,6 +168,46 @@
 				A42D3A4E2BFC831C00B3F86F /* ListOrderInteractor.swift */,
 			);
 			path = ListOrder;
+			sourceTree = "<group>";
+		};
+		A42D3A9E2BFCA30B00B3F86F /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A42D3A9F2BFCA31E00B3F86F /* ListOrderViewController+UI.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		A42D3AA12BFCA50C00B3F86F /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				A42D3AAC2BFD1DD700B3F86F /* Order */,
+			);
+			path = Workers;
+			sourceTree = "<group>";
+		};
+		A42D3AA42BFCB06800B3F86F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A42D3AA52BFCB08400B3F86F /* Order.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A42D3AA72BFD045F00B3F86F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A42D3AA82BFD047100B3F86F /* OrderMockStore.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A42D3AAC2BFD1DD700B3F86F /* Order */ = {
+			isa = PBXGroup;
+			children = (
+				A42D3AAA2BFD1BF400B3F86F /* OrderMockWorker.swift */,
+			);
+			path = Order;
 			sourceTree = "<group>";
 		};
 		A482EF542BFBA0A1004B129B /* CreateOrderViewController+UI */ = {
@@ -200,8 +249,11 @@
 		A4EA07392BC2EAF9008D52B2 /* CleanSwiftTutorial */ = {
 			isa = PBXGroup;
 			children = (
-				A4F33F3D2BF6392700EEE85E /* Supporting Files */,
+				A42D3AA42BFCB06800B3F86F /* Models */,
+				A42D3AA72BFD045F00B3F86F /* Services */,
+				A42D3AA12BFCA50C00B3F86F /* Workers */,
 				A4EA076A2BC2EBC0008D52B2 /* Scenes */,
+				A4F33F3D2BF6392700EEE85E /* Supporting Files */,
 				A4EA073A2BC2EAF9008D52B2 /* AppDelegate.swift */,
 				A4EA073C2BC2EAF9008D52B2 /* SceneDelegate.swift */,
 				A4EA073E2BC2EAF9008D52B2 /* ViewController.swift */,
@@ -427,6 +479,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4EA07AE2BC2EE5B008D52B2 /* CreateOrderPresenter.swift in Sources */,
+				A42D3AAB2BFD1BF400B3F86F /* OrderMockWorker.swift in Sources */,
 				A4EA07AF2BC2EE5B008D52B2 /* CreateOrderWorker.swift in Sources */,
 				A4EA07B02BC2EE5B008D52B2 /* CreateOrderRouter.swift in Sources */,
 				A4F33F462BF66C1100EEE85E /* CreateOrderTextField.swift in Sources */,
@@ -436,6 +489,7 @@
 				A41898752BF29D65002511D9 /* CreateOrderTableViewCell.swift in Sources */,
 				A418987A2BF3E93A002511D9 /* CreateOrderConstants.swift in Sources */,
 				A4EA073F2BC2EAF9008D52B2 /* ViewController.swift in Sources */,
+				A42D3AA62BFCB08400B3F86F /* Order.swift in Sources */,
 				A42D3A4F2BFC831C00B3F86F /* ListOrderPresenter.swift in Sources */,
 				A42D3A502BFC831C00B3F86F /* ListOrderWorker.swift in Sources */,
 				A42D3A512BFC831C00B3F86F /* ListOrderRouter.swift in Sources */,
@@ -448,6 +502,8 @@
 				A4F33F442BF6690900EEE85E /* Array+Extension.swift in Sources */,
 				A4C16D7D2BFA74C800E799BC /* DatePicker+Protocol.swift in Sources */,
 				A45ACBDF2BF4BC310012EF19 /* Constants.swift in Sources */,
+				A42D3AA92BFD047100B3F86F /* OrderMockStore.swift in Sources */,
+				A42D3AA02BFCA31E00B3F86F /* ListOrderViewController+UI.swift in Sources */,
 				A4F33F402BF6396100EEE85E /* UITableView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
