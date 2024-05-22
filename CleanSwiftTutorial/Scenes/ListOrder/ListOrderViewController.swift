@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - ListOrderDisplayLogic Protocol
 protocol ListOrderDisplayLogic: AnyObject {
-    func displayFetchedOrders(viewModel: ListOrder.FetchOrder.ViewModel)
+    func displayGetOrders(viewModel: ListOrder.GetOrders.ViewModel)
 }
 
 // MARK: - ListOrderViewController Class
@@ -27,7 +27,7 @@ final class ListOrderViewController: UITableViewController {
 
     private typealias DataSource = UITableViewDiffableDataSource<
         Section,
-        ListOrder.FetchOrder.ViewModel.Order
+        ListOrder.GetOrders.ViewModel.Order
     >
 
     private lazy var dataSource = makeDataSource()
@@ -57,7 +57,7 @@ final class ListOrderViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchOrders()
+        getOrders()
     }
 
     // MARK: - Override Parent Methods
@@ -98,9 +98,9 @@ final class ListOrderViewController: UITableViewController {
 
     // MARK: - Interactor Logic
 
-    private func fetchOrders() {
-        let request = ListOrder.FetchOrder.Request()
-        interactor?.fetchOrders(request: request)
+    private func getOrders() {
+        let request = ListOrder.GetOrders.Request()
+        interactor?.getOrders(request: request)
     }
 
     // MARK: - Helpers
@@ -124,7 +124,7 @@ final class ListOrderViewController: UITableViewController {
         )
     }
 
-    private func updateFetchedOrders(orders: [ListOrder.FetchOrder.ViewModel.Order]) {
+    private func updateGetOrders(orders: [ListOrder.GetOrders.ViewModel.Order]) {
         var snapshot = dataSource.snapshot()
 
         snapshot.appendSections(Section.allCases)
@@ -137,8 +137,8 @@ final class ListOrderViewController: UITableViewController {
 
 // MARK: - ListOrderDisplayLogic Extension
 extension ListOrderViewController: ListOrderDisplayLogic {
-    func displayFetchedOrders(viewModel: ListOrder.FetchOrder.ViewModel) {
+    func displayGetOrders(viewModel: ListOrder.GetOrders.ViewModel) {
         let orders = viewModel.orders
-        updateFetchedOrders(orders: orders)
+        updateGetOrders(orders: orders)
     }
 }

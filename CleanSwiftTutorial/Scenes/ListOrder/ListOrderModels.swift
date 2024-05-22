@@ -18,7 +18,7 @@ enum ListOrder {
         struct ViewModel {}
     }
 
-    enum FetchOrder {
+    enum GetOrders {
         struct Request {}
 
         struct Response {

@@ -16,7 +16,7 @@ final class ListOrderTableViewCell: UITableViewCell {
     private let totalPriceLabel = UILabel()
     private let stackView = UIStackView()
 
-    private(set) var viewModel: ListOrder.FetchOrder.ViewModel.Order? {
+    private(set) var viewModel: ListOrder.GetOrders.ViewModel.Order? {
         didSet { configureData() }
     }
 
@@ -34,7 +34,7 @@ final class ListOrderTableViewCell: UITableViewCell {
 
     // MARK: - Helpers
     func configure(
-        for viewModel: ListOrder.FetchOrder.ViewModel.Order
+        for viewModel: ListOrder.GetOrders.ViewModel.Order
     ) {
         self.viewModel = viewModel
     }

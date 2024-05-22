@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - ListOrderPresentationLogic Protocol
 protocol ListOrderPresentationLogic {
-    func presentFetchedOrders(response: ListOrder.FetchOrder.Response)
+    func presentGetOrders(response: ListOrder.GetOrders.Response)
 }
 
 // MARK: - ListOrderPresenter Class
@@ -37,10 +37,10 @@ final class ListOrderPresenter {
 
 // MARK: - ListOrderPresentationLogic Extension
 extension ListOrderPresenter: ListOrderPresentationLogic {
-    func presentFetchedOrders(response: ListOrder.FetchOrder.Response) {
+    func presentGetOrders(response: ListOrder.GetOrders.Response) {
         let responseOrders = response.orders
 
-        var orders: [ListOrder.FetchOrder.ViewModel.Order] = []
+        var orders: [ListOrder.GetOrders.ViewModel.Order] = []
 
         responseOrders.forEach {
             let createdDate = $0.createdDate
@@ -57,7 +57,7 @@ extension ListOrderPresenter: ListOrderPresentationLogic {
 
             let email = $0.contactInformation.email
 
-            let order = ListOrder.FetchOrder.ViewModel.Order(
+            let order = ListOrder.GetOrders.ViewModel.Order(
                 createdDate: formattedCreatedDate,
                 totalPrice: formattedTotalPrice,
                 orderId: orderId,
@@ -68,8 +68,8 @@ extension ListOrderPresenter: ListOrderPresentationLogic {
             orders.append(order)
         }
 
-        let viewModel = ListOrder.FetchOrder.ViewModel(orders: orders)
+        let viewModel = ListOrder.GetOrders.ViewModel(orders: orders)
 
-        viewController?.displayFetchedOrders(viewModel: viewModel)
+        viewController?.displayGetOrders(viewModel: viewModel)
     }
 }

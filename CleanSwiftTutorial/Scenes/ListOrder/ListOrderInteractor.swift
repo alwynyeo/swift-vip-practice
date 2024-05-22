@@ -8,7 +8,7 @@
 
 // MARK: - ListOrderBusinessLogic Protocol
 protocol ListOrderBusinessLogic {
-    func fetchOrders(request: ListOrder.FetchOrder.Request)
+    func getOrders(request: ListOrder.GetOrders.Request)
 }
 
 // MARK: - ListOrderDataStore Protocol
@@ -22,7 +22,7 @@ final class ListOrderInteractor {
 
     var presenter: ListOrderPresentationLogic?
 
-    var worker: ListOrderWorker?
+    let worker: ListOrderWorker
 
     // MARK: - Object Lifecycle
 
@@ -33,9 +33,9 @@ final class ListOrderInteractor {
 
     // MARK: - Helpers
 
-    private func presentFetchedOrders(orders: [Order]) {
-        let response = ListOrder.FetchOrder.Response(orders: orders)
-        presenter?.presentFetchedOrders(response: response)
+    private func presentGetOrders(orders: [Order]) {
+        let response = ListOrder.GetOrders.Response(orders: orders)
+        presenter?.presentGetOrders(response: response)
     }
 
     deinit {
@@ -45,17 +45,15 @@ final class ListOrderInteractor {
 
 // MARK: - ListOrderBusinessLogic Extension
 extension ListOrderInteractor: ListOrderBusinessLogic {
-    func fetchOrders(request: ListOrder.FetchOrder.Request) {
-        worker?.fetchOrders(completion: { [weak self] result in
-            guard let self else { return  }
-
-            switch result {
-                case .success(let orders):
-                    presentFetchedOrders(orders: orders)
-                case .failure(let error):
-                    print(error)
-            }
-        })
+    func getOrders(request: ListOrder.GetOrders.Request) {
+        do {
+            let orders = try worker.getOrders()
+            presentGetOrders(orders: orders)
+        } catch ListOrderError.unableToGet {
+            print("Unable to get orders")
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }
 

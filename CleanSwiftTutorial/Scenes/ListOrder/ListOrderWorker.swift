@@ -6,10 +6,12 @@
 //  Copyright (c) 2024 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
-enum ListOrderError: Error {}
+enum ListOrderError: Error {
+    case unableToGet
+}
 
 protocol ListOrderWorkerProtocol {
-    func fetchOrders(completion: @escaping(Result<[Order], ListOrderError>) -> Void)
+    func getOrders() throws -> [Order]
 }
 
 // MARK: - ListOrderWorker Class
@@ -20,16 +22,14 @@ final class ListOrderWorker {
         self.worker = worker
     }
 
-    func fetchOrders(completion: @escaping (Result<[Order], ListOrderError>) -> Void) {
-        worker.fetchOrders { [weak self] result in
-            guard let _ = self else { return }
-
-            switch result {
-                case .success(let orders):
-                    completion(.success(orders))
-                case .failure(let error):
-                    completion(.failure(error))
-            }
+    func getOrders() throws -> [Order] {
+        do {
+            let orders = try worker.getOrders()
+            return orders
+        } catch ListOrderError.unableToGet {
+            throw ListOrderError.unableToGet
+        } catch {
+            throw error
         }
     }
 }

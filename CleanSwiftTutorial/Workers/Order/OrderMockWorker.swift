@@ -98,8 +98,8 @@ final class OrderMockWorker: OrderMockWorkerProtocol {
 
     // MARK: - CRUD Operations
 
-    func fetchOrders(completion: @escaping (Result<[Order], ListOrderError>) -> Void) {
+    func getOrders() throws -> [Order] {
         let orders: [Order] = orders
-        completion(.success(orders))
+        return orders
     }
 }
