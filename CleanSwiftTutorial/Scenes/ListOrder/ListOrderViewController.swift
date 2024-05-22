@@ -10,16 +10,27 @@ import UIKit
 
 // MARK: - ListOrderDisplayLogic Protocol
 protocol ListOrderDisplayLogic: AnyObject {
-    func displaySomething(viewModel: ListOrder.Something.ViewModel)
+    func displayFetchedOrders(viewModel: ListOrder.FetchOrder.ViewModel)
 }
 
 // MARK: - ListOrderViewController Class
 final class ListOrderViewController: UITableViewController {
     // MARK: - Declarations
-    
+
     private var interactor: ListOrderBusinessLogic?
 
     private var router: (ListOrderRoutingLogic & ListOrderDataPassing)?
+
+    private enum Section: CaseIterable {
+        case main
+    }
+
+    private typealias DataSource = UITableViewDiffableDataSource<
+        Section,
+        ListOrder.FetchOrder.ViewModel.Order
+    >
+
+    private lazy var dataSource = makeDataSource()
 
     // MARK: - Object Lifecycle
 
@@ -31,6 +42,10 @@ final class ListOrderViewController: UITableViewController {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setUp()
+    }
+
+    deinit {
+        print("Deinit - ListOrderViewController")
     }
 
     // MARK: - View Lifecycle
@@ -46,6 +61,11 @@ final class ListOrderViewController: UITableViewController {
     }
 
     // MARK: - Override Parent Methods
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
+        print(item.totalPrice)
+    }
 
     // MARK: - Setup
 
@@ -84,9 +104,41 @@ final class ListOrderViewController: UITableViewController {
     }
 
     // MARK: - Helpers
+
+    private func makeDataSource() -> DataSource {
+        DataSource(
+            tableView: tableView,
+            cellProvider: { [weak self] (tableView, indexPath, viewModel) -> UITableViewCell? in
+                let defaultCell = UITableViewCell()
+
+                let _ = self
+
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: ListOrderTableViewCell.cellId, for: indexPath) as? ListOrderTableViewCell else {
+                    return defaultCell
+                }
+
+                cell.configure(for: viewModel)
+
+                return cell
+            }
+        )
+    }
+
+    private func updateFetchedOrders(orders: [ListOrder.FetchOrder.ViewModel.Order]) {
+        var snapshot = dataSource.snapshot()
+
+        snapshot.appendSections(Section.allCases)
+
+        snapshot.appendItems(orders, toSection: .main)
+
+        dataSource.apply(snapshot, animatingDifferences: true)
+    }
 }
 
 // MARK: - ListOrderDisplayLogic Extension
 extension ListOrderViewController: ListOrderDisplayLogic {
-    func displaySomething(viewModel: ListOrder.Something.ViewModel) {}
+    func displayFetchedOrders(viewModel: ListOrder.FetchOrder.ViewModel) {
+        let orders = viewModel.orders
+        updateFetchedOrders(orders: orders)
+    }
 }

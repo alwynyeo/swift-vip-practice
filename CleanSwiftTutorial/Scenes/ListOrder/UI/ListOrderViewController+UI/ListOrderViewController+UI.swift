@@ -34,5 +34,7 @@ extension ListOrderViewController {
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
 
-    func configureTableView() {}
+    func configureTableView() {
+        tableView.register(ListOrderTableViewCell.self, forCellReuseIdentifier: ListOrderTableViewCell.cellId)
+    }
 }
