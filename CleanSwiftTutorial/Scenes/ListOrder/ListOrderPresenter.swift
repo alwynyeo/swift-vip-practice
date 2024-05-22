@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - ListOrderPresentationLogic Protocol
 protocol ListOrderPresentationLogic {
-    func presentGetOrders(response: ListOrder.GetOrders.Response)
+    func presentOrders(response: ListOrder.GetOrders.Response)
 }
 
 // MARK: - ListOrderPresenter Class
@@ -37,7 +37,7 @@ final class ListOrderPresenter {
 
 // MARK: - ListOrderPresentationLogic Extension
 extension ListOrderPresenter: ListOrderPresentationLogic {
-    func presentGetOrders(response: ListOrder.GetOrders.Response) {
+    func presentOrders(response: ListOrder.GetOrders.Response) {
         let responseOrders = response.orders
 
         var orders: [ListOrder.GetOrders.ViewModel.Order] = []

@@ -32,10 +32,21 @@ final class ListOrderInteractor {
     }
 
     // MARK: - Helpers
+    
+    private func handleGetOrders() {
+        do {
+            let orders = try worker.getOrders()
+            presentOrders(orders: orders)
+        } catch ListOrderError.unableToGet {
+            print("Unable to get orders")
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
 
-    private func presentGetOrders(orders: [Order]) {
+    private func presentOrders(orders: [Order]) {
         let response = ListOrder.GetOrders.Response(orders: orders)
-        presenter?.presentGetOrders(response: response)
+        presenter?.presentOrders(response: response)
     }
 
     deinit {
@@ -46,14 +57,7 @@ final class ListOrderInteractor {
 // MARK: - ListOrderBusinessLogic Extension
 extension ListOrderInteractor: ListOrderBusinessLogic {
     func getOrders(request: ListOrder.GetOrders.Request) {
-        do {
-            let orders = try worker.getOrders()
-            presentGetOrders(orders: orders)
-        } catch ListOrderError.unableToGet {
-            print("Unable to get orders")
-        } catch {
-            print(error.localizedDescription)
-        }
+        handleGetOrders()
     }
 }
 
