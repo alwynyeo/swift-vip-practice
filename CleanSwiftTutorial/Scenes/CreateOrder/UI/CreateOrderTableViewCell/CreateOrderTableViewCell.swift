@@ -14,7 +14,7 @@ final class CreateOrderTableViewCell: UITableViewCell {
 
     private weak var datePickerDelegate: DatePickerDelegate?
 
-    private(set) var viewModel: CreateOrder.FormDataSource? {
+    private(set) var viewModel: CreateOrder.GenerateForm.Form? {
         didSet { configureData() }
     }
 
@@ -40,7 +40,7 @@ final class CreateOrderTableViewCell: UITableViewCell {
     // MARK: - Helpers
 
     func configure(
-        for viewModel: CreateOrder.FormDataSource,
+        for viewModel: CreateOrder.GenerateForm.Form,
         textFieldDelegate: UITextFieldDelegate,
         pickerViewDelegate: UIPickerViewDelegate,
         datePickerDelegate: DatePickerDelegate
@@ -66,7 +66,7 @@ final class CreateOrderTableViewCell: UITableViewCell {
         setInputComponentVisibility(for: inputType)
     }
 
-    private func setInputComponentVisibility(for inputType: CreateOrder.FormDataSource.InputType) {
+    private func setInputComponentVisibility(for inputType: CreateOrder.GenerateForm.Form.InputType) {
         switch inputType {
             case .textField:
                 textField.isHidden = false

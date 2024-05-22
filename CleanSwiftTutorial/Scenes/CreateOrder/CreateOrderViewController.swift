@@ -32,12 +32,12 @@ final class CreateOrderViewController: UITableViewController {
 
     private typealias DataSource = UITableViewDiffableDataSource<
         Section,
-        CreateOrder.FormDataSource
+        CreateOrder.GenerateForm.Form
     >
 
     private typealias Snapshot = NSDiffableDataSourceSnapshot<
         Section,
-        CreateOrder.FormDataSource
+        CreateOrder.GenerateForm.Form
     >
 
     private var textFields: [CreateOrderTextField] = []
@@ -69,8 +69,7 @@ final class CreateOrderViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadTableViewData()
-        doSomething()
+        generateForms()
     }
 
     deinit {
@@ -160,9 +159,9 @@ final class CreateOrderViewController: UITableViewController {
 
     // MARK: - Interactor Logic
 
-    private func doSomething() {
-        let request = CreateOrder.Something.Request()
-        interactor?.doSomething(request: request)
+    private func generateForms() {
+        let request = CreateOrder.GenerateForm.Request()
+        interactor?.generateForms(request: request)
     }
 
     private func formatExpirationDate(date: Date) {

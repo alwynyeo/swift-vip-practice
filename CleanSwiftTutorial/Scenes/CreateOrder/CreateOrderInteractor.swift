@@ -6,11 +6,13 @@
 //  Copyright (c) 2024 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
+import Foundation
+
 // MARK: - CreateOrderBusinessLogic Protocol
 protocol CreateOrderBusinessLogic {
     var shippingMethods: [String] { get }
 
-    func doSomething(request: CreateOrder.Something.Request)
+    func generateForms(request: CreateOrder.GenerateForm.Request)
     func formatExpirationDate(request: CreateOrder.FormatExpirationDate.Request)
 }
 
@@ -25,7 +27,7 @@ final class CreateOrderInteractor {
 
     var presenter: CreateOrderPresentationLogic?
 
-    var worker: CreateOrderWorker?
+    let worker: CreateOrderWorker
 
     var shippingMethods: [String] {
         [
@@ -34,23 +36,46 @@ final class CreateOrderInteractor {
             Order.ShipmentMethod(speed: .twoDay).title,
         ]
     }
+
+    // MARK: - Object Lifecycle
+
+    init() {
+        let worker = CreateOrderWorker()
+        self.worker = worker
+    }
+
+    // MARK: - Helpers
+
+    private func handleGenerateForms() {
+        let generateCreateOrderFormWorker = worker.generateCreateOrderFormWorker
+        let forms = generateCreateOrderFormWorker.generate()
+        presentGeneratedForms(forms: forms)
+    }
+
+    private func presentGeneratedForms(forms: [[CreateOrder.GenerateForm.Form]]) {
+        let response = CreateOrder.GenerateForm.Response(forms: forms)
+        presenter?.presentGeneratedForms(response: response)
+    }
+
+    private func handleFormatExpirationDate(request: CreateOrder.FormatExpirationDate.Request) {
+        let date = request.date
+        presentExpirationDate(date: date)
+    }
+
+    private func presentExpirationDate(date: Date) {
+        let response = CreateOrder.FormatExpirationDate.Response(date: date)
+        presenter?.presentExpirationDate(response: response)
+    }
 }
 
 // MARK: - CreateOrderBusinessLogic Extension
 extension CreateOrderInteractor: CreateOrderBusinessLogic {
-    func doSomething(request: CreateOrder.Something.Request) {
-        worker = CreateOrderWorker()
-        worker?.doSomeWork()
-
-        let response = CreateOrder.Something.Response()
-        presenter?.presentSomething(response: response)
+    func generateForms(request: CreateOrder.GenerateForm.Request) {
+        handleGenerateForms()
     }
 
     func formatExpirationDate(request: CreateOrder.FormatExpirationDate.Request) {
-        let date = request.date
-        let response = CreateOrder.FormatExpirationDate.Response(date: date)
-
-        presenter?.presentExpirationDate(response: response)
+        handleFormatExpirationDate(request: request)
     }
 }
 

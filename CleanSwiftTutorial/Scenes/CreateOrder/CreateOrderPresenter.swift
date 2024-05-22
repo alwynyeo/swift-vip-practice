@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - CreateOrderPresentationLogic Protocol
 protocol CreateOrderPresentationLogic {
-    func presentSomething(response: CreateOrder.Something.Response)
+    func presentGeneratedForms(response: CreateOrder.GenerateForm.Response)
     func presentExpirationDate(response: CreateOrder.FormatExpirationDate.Response)
 }
 
@@ -33,9 +33,12 @@ final class CreateOrderPresenter {
 
 // MARK: - CreateOrderPresentationLogic Extension
 extension CreateOrderPresenter: CreateOrderPresentationLogic {
-    func presentSomething(response: CreateOrder.Something.Response) {
-        let viewModel = CreateOrder.Something.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
+    func presentGeneratedForms(response: CreateOrder.GenerateForm.Response) {
+        let forms = response.forms
+
+        forms.forEach {
+            print($0.count)
+        }
     }
 
     func presentExpirationDate(response: CreateOrder.FormatExpirationDate.Response) {

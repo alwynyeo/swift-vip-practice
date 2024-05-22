@@ -12,9 +12,9 @@ import Foundation
 enum CreateOrder {
     enum Something {
         struct Request {}
-        
+
         struct Response {}
-        
+
         struct ViewModel {}
     }
 
@@ -32,33 +32,49 @@ enum CreateOrder {
         }
     }
 
-    struct FormDataSource: Hashable {
-        enum InputType {
-            case textField
-            case switchToggle
-            case datePicker
-            case pickerView
+    enum GenerateForm {
+        struct Request {}
+
+        struct Response {
+            let forms: [[Form]]
         }
 
-        let id: String
-        let title: String
-        let inputType: InputType
-        
-        var inputTag: Int? = nil
-
-        init(id: String, title: String, inputType: InputType, inputTag: Int? = nil) {
-            self.id = id
-            self.title = title
-            self.inputType = inputType
-            self.inputTag = inputTag
+        struct ViewModel {
+            let contactInformations: [Form]
+            let shipmentAddresses: [Form]
+            let shipmentMethods: [Form]
+            let paymentInformations: [Form]
+            let billingAddresses: [Form]
         }
 
-        func hash(into hasher: inout Hasher) {
-            hasher.combine(id)
-        }
+        struct Form: Hashable {
+            enum InputType {
+                case textField
+                case switchToggle
+                case datePicker
+                case pickerView
+            }
 
-        static func == (lhs: FormDataSource, rhs: FormDataSource) -> Bool {
-            return lhs.id == rhs.id
+            let id: String
+            let title: String
+            let inputType: InputType
+
+            var inputTag: Int? = nil
+
+            init(id: String, title: String, inputType: InputType, inputTag: Int? = nil) {
+                self.id = id
+                self.title = title
+                self.inputType = inputType
+                self.inputTag = inputTag
+            }
+
+            func hash(into hasher: inout Hasher) {
+                hasher.combine(id)
+            }
+
+            static func == (lhs: Form, rhs: Form) -> Bool {
+                return lhs.id == rhs.id
+            }
         }
     }
 }
