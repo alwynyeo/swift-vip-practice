@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - CreateOrderDisplayLogic Protocol
 protocol CreateOrderDisplayLogic: AnyObject {
-    func displaySomething(viewModel: CreateOrder.Something.ViewModel)
+    func displayGeneratedForms(viewModel: CreateOrder.GenerateForm.ViewModel)
     func displayExpirationDate(viewModel: CreateOrder.FormatExpirationDate.ViewModel)
 }
 
@@ -31,11 +31,6 @@ final class CreateOrderViewController: UITableViewController {
     }
 
     private typealias DataSource = UITableViewDiffableDataSource<
-        Section,
-        CreateOrder.GenerateForm.Form
-    >
-
-    private typealias Snapshot = NSDiffableDataSourceSnapshot<
         Section,
         CreateOrder.GenerateForm.Form
     >
@@ -195,22 +190,29 @@ final class CreateOrderViewController: UITableViewController {
         )
     }
 
-    private func loadTableViewData() {
-        var snapshot = Snapshot()
+    private func updateGeneratedForms(viewModel: CreateOrder.GenerateForm.ViewModel) {
+        let contactInformations = viewModel.contactInformations
+        let shipmentAddresses = viewModel.shipmentAddresses
+        let shipmentMethods = viewModel.shipmentMethods
+        let paymentInformations = viewModel.paymentInformations
+        let billingAddresses = viewModel.billingAddresses
+
+        var snapshot = dataSource.snapshot()
 
         snapshot.appendSections(Section.allCases)
 
-        snapshot.appendItems(Constants.Scenes.CreateOrderConstants.customerContactInfos, toSection: .customerContactInfo)
-        snapshot.appendItems(Constants.Scenes.CreateOrderConstants.shipmentAddresses, toSection: .shipmentAddress)
-        snapshot.appendItems(Constants.Scenes.CreateOrderConstants.shipmentMethods, toSection: .shipmentMethod)
-        snapshot.appendItems(Constants.Scenes.CreateOrderConstants.paymentInformations, toSection: .paymentInformation)
-        snapshot.appendItems(Constants.Scenes.CreateOrderConstants.billingAddresses, toSection: .billingAddress)
+        snapshot.appendItems(contactInformations, toSection: .customerContactInfo)
+        snapshot.appendItems(shipmentAddresses, toSection: .shipmentAddress)
+        snapshot.appendItems(shipmentMethods, toSection: .shipmentMethod)
+        snapshot.appendItems(paymentInformations, toSection: .paymentInformation)
+        snapshot.appendItems(billingAddresses, toSection: .billingAddress)
 
-        dataSource.apply(snapshot, animatingDifferences: true)
+        DispatchQueue.main.async {
+            self.dataSource.apply(snapshot, animatingDifferences: true)
+        }
     }
 
     private func sortTextFields() {
-
         let isTextFieldsEmpty = textFields.isEmpty
 
         guard !isTextFieldsEmpty else { return }
@@ -233,7 +235,9 @@ final class CreateOrderViewController: UITableViewController {
 
 // MARK: - CreateOrderDisplayLogic Extension
 extension CreateOrderViewController: CreateOrderDisplayLogic {
-    func displaySomething(viewModel: CreateOrder.Something.ViewModel) {}
+    func displayGeneratedForms(viewModel: CreateOrder.GenerateForm.ViewModel) {
+        updateGeneratedForms(viewModel: viewModel)
+    }
 
     func displayExpirationDate(viewModel: CreateOrder.FormatExpirationDate.ViewModel) {
         let dateString = viewModel.dateString
@@ -245,29 +249,23 @@ extension CreateOrderViewController: CreateOrderDisplayLogic {
 extension CreateOrderViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         sortTextFields()
-
         return true
     }
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
         let inputView = textField.inputView
-
         let isPickerView = inputView is UIPickerView
-
         pickerViewTextField = isPickerView ? textField : nil
     }
 
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         pickerViewTextField = nil
-
         return true
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let textField = textField as! CreateOrderTextField
-
         handleKeyboardResponder(for: textField)
-
         return true
     }
 }

@@ -47,7 +47,7 @@ final class GenerateCreateOrderFormWorker: GenerateCreateOrderFormProtocol {
 
     // MARK: - Operations
 
-    func generate() -> [[CreateOrder.GenerateForm.Form]] {
+    func generateForms() -> [[CreateOrder.GenerateForm.Form]] {
         let forms: [[CreateOrder.GenerateForm.Form]] = [
             contactInformations,
             shipmentAddresses,

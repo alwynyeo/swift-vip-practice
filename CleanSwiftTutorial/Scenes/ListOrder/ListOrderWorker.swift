@@ -16,12 +16,18 @@ protocol ListOrderWorkerProtocol {
 
 // MARK: - ListOrderWorker Class
 final class ListOrderWorker {
+    // MARK: - Declarations
+
     private let worker: ListOrderWorkerProtocol
 
+    // MARK: - Object Lifecycle
+    
     init(worker: ListOrderWorkerProtocol) {
         self.worker = worker
     }
 
+    // MARK: - Helpers
+    
     func getOrders() throws -> [Order] {
         do {
             let orders = try worker.getOrders()

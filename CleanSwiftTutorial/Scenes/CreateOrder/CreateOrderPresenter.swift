@@ -36,9 +36,21 @@ extension CreateOrderPresenter: CreateOrderPresentationLogic {
     func presentGeneratedForms(response: CreateOrder.GenerateForm.Response) {
         let forms = response.forms
 
-        forms.forEach {
-            print($0.count)
-        }
+        let contactInformations = forms[0]
+        let shipmentAddresses = forms[1]
+        let shipmentMethods = forms[2]
+        let paymentInformations = forms[3]
+        let billingAddresses = forms[4]
+
+        let viewModel = CreateOrder.GenerateForm.ViewModel(
+            contactInformations: contactInformations,
+            shipmentAddresses: shipmentAddresses,
+            shipmentMethods: shipmentMethods,
+            paymentInformations: paymentInformations,
+            billingAddresses: billingAddresses
+        )
+
+        viewController?.displayGeneratedForms(viewModel: viewModel)
     }
 
     func presentExpirationDate(response: CreateOrder.FormatExpirationDate.Response) {

@@ -7,20 +7,25 @@
 //
 
 protocol GenerateCreateOrderFormProtocol {
-    func generate() -> [[CreateOrder.GenerateForm.Form]]
+    func generateForms() -> [[CreateOrder.GenerateForm.Form]]
 }
 
 // MARK: - CreateOrderWorker Class
 final class CreateOrderWorker {
+    // MARK: - Declarations
 
-    let generateCreateOrderFormWorker: GenerateCreateOrderFormProtocol
+    private let generateCreateOrderFormWorker: GenerateCreateOrderFormProtocol
+
+    // MARK: - Object Lifecycle
 
     init() {
         generateCreateOrderFormWorker = GenerateCreateOrderFormWorker()
     }
 
-    func generate() -> [[CreateOrder.GenerateForm.Form]] {
-        let forms = generateCreateOrderFormWorker.generate()
+    // MARK: - Helpers
+
+    func generateForms() -> [[CreateOrder.GenerateForm.Form]] {
+        let forms = generateCreateOrderFormWorker.generateForms()
         return forms
     }
 }

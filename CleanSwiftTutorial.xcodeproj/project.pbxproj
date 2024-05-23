@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		A41898752BF29D65002511D9 /* CreateOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41898742BF29D65002511D9 /* CreateOrderTableViewCell.swift */; };
-		A418987A2BF3E93A002511D9 /* CreateOrderConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41898792BF3E93A002511D9 /* CreateOrderConstants.swift */; };
 		A425950D2BFE57F60067D402 /* ListOrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A425950C2BFE57F60067D402 /* ListOrderTableViewCell.swift */; };
 		A42595112BFE79710067D402 /* GenerateCreateOrderFormWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42595102BFE79710067D402 /* GenerateCreateOrderFormWorker.swift */; };
 		A42D3A4F2BFC831C00B3F86F /* ListOrderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D3A492BFC831C00B3F86F /* ListOrderPresenter.swift */; };
@@ -60,7 +59,6 @@
 
 /* Begin PBXFileReference section */
 		A41898742BF29D65002511D9 /* CreateOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrderTableViewCell.swift; sourceTree = "<group>"; };
-		A41898792BF3E93A002511D9 /* CreateOrderConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrderConstants.swift; sourceTree = "<group>"; };
 		A425950C2BFE57F60067D402 /* ListOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOrderTableViewCell.swift; sourceTree = "<group>"; };
 		A42595102BFE79710067D402 /* GenerateCreateOrderFormWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateCreateOrderFormWorker.swift; sourceTree = "<group>"; };
 		A42D3A492BFC831C00B3F86F /* ListOrderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOrderPresenter.swift; sourceTree = "<group>"; };
@@ -138,14 +136,6 @@
 				A41898742BF29D65002511D9 /* CreateOrderTableViewCell.swift */,
 			);
 			path = CreateOrderTableViewCell;
-			sourceTree = "<group>";
-		};
-		A41898762BF2ADED002511D9 /* Constants */ = {
-			isa = PBXGroup;
-			children = (
-				A41898792BF3E93A002511D9 /* CreateOrderConstants.swift */,
-			);
-			path = Constants;
 			sourceTree = "<group>";
 		};
 		A41898772BF3E910002511D9 /* Constants */ = {
@@ -309,7 +299,6 @@
 		A4EA076B2BC2EBC8008D52B2 /* CreateOrder */ = {
 			isa = PBXGroup;
 			children = (
-				A41898762BF2ADED002511D9 /* Constants */,
 				A41898722BF29D29002511D9 /* UI */,
 				A4EA07A82BC2EE5B008D52B2 /* CreateOrderPresenter.swift */,
 				A4EA07A92BC2EE5B008D52B2 /* CreateOrderWorker.swift */,
@@ -503,7 +492,6 @@
 				A4EA07B22BC2EE5B008D52B2 /* CreateOrderViewController.swift in Sources */,
 				A4EA07B32BC2EE5B008D52B2 /* CreateOrderInteractor.swift in Sources */,
 				A41898752BF29D65002511D9 /* CreateOrderTableViewCell.swift in Sources */,
-				A418987A2BF3E93A002511D9 /* CreateOrderConstants.swift in Sources */,
 				A42D3AA62BFCB08400B3F86F /* Order.swift in Sources */,
 				A42D3A4F2BFC831C00B3F86F /* ListOrderPresenter.swift in Sources */,
 				A42D3A502BFC831C00B3F86F /* ListOrderWorker.swift in Sources */,

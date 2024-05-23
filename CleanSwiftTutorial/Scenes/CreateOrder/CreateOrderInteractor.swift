@@ -47,8 +47,7 @@ final class CreateOrderInteractor {
     // MARK: - Helpers
 
     private func handleGenerateForms() {
-        let generateCreateOrderFormWorker = worker.generateCreateOrderFormWorker
-        let forms = generateCreateOrderFormWorker.generate()
+        let forms = worker.generateForms()
         presentGeneratedForms(forms: forms)
     }
 
