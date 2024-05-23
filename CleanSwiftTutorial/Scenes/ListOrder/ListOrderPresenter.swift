@@ -70,6 +70,6 @@ extension ListOrderPresenter: ListOrderPresentationLogic {
 
         let viewModel = ListOrder.GetOrders.ViewModel(orders: orders)
 
-        viewController?.displayGetOrders(viewModel: viewModel)
+        viewController?.displayOrders(viewModel: viewModel)
     }
 }

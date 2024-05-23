@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - ListOrderDisplayLogic Protocol
 protocol ListOrderDisplayLogic: AnyObject {
-    func displayGetOrders(viewModel: ListOrder.GetOrders.ViewModel)
+    func displayOrders(viewModel: ListOrder.GetOrders.ViewModel)
 }
 
 // MARK: - ListOrderViewController Class
@@ -124,7 +124,7 @@ final class ListOrderViewController: UITableViewController {
         )
     }
 
-    private func updateGetOrders(orders: [ListOrder.GetOrders.ViewModel.Order]) {
+    private func updateOrders(orders: [ListOrder.GetOrders.ViewModel.Order]) {
         var snapshot = dataSource.snapshot()
 
         snapshot.appendSections(Section.allCases)
@@ -137,8 +137,8 @@ final class ListOrderViewController: UITableViewController {
 
 // MARK: - ListOrderDisplayLogic Extension
 extension ListOrderViewController: ListOrderDisplayLogic {
-    func displayGetOrders(viewModel: ListOrder.GetOrders.ViewModel) {
+    func displayOrders(viewModel: ListOrder.GetOrders.ViewModel) {
         let orders = viewModel.orders
-        updateGetOrders(orders: orders)
+        updateOrders(orders: orders)
     }
 }
