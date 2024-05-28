@@ -18,7 +18,7 @@ protocol CreateOrderBusinessLogic {
 
 // MARK: - CreateOrderDataStore Protocol
 protocol CreateOrderDataStore {
-    //  var name: String { get set }
+    var existingOrder: Order? { get set }
 }
 
 // MARK: - CreateOrderInteractor Class
@@ -36,6 +36,8 @@ final class CreateOrderInteractor {
             Order.ShipmentMethod(speed: .twoDay).title,
         ]
     }
+
+    var existingOrder: Order?
 
     // MARK: - Object Lifecycle
 

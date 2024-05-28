@@ -147,10 +147,10 @@ private extension CreateOrderTableViewCell {
         contentView.addSubview(stackView)
 
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
-            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
-            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8),
+            stackView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 8),
+            stackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 8),
+            stackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -8),
+            stackView.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -8),
         ])
     }
 }

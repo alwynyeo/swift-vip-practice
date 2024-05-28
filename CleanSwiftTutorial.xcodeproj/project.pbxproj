@@ -16,11 +16,15 @@
 		A42D3A522BFC831C00B3F86F /* ListOrderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D3A4C2BFC831C00B3F86F /* ListOrderModels.swift */; };
 		A42D3A532BFC831C00B3F86F /* ListOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D3A4D2BFC831C00B3F86F /* ListOrderViewController.swift */; };
 		A42D3A542BFC831C00B3F86F /* ListOrderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D3A4E2BFC831C00B3F86F /* ListOrderInteractor.swift */; };
-		A42D3AA02BFCA31E00B3F86F /* ListOrderViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D3A9F2BFCA31E00B3F86F /* ListOrderViewController+UI.swift */; };
 		A42D3AA62BFCB08400B3F86F /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D3AA52BFCB08400B3F86F /* Order.swift */; };
 		A42D3AAB2BFD1BF400B3F86F /* OrderMockWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D3AAA2BFD1BF400B3F86F /* OrderMockWorker.swift */; };
 		A45ACBDF2BF4BC310012EF19 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45ACBDE2BF4BC310012EF19 /* Constants.swift */; };
-		A482EF582BFBA0D6004B129B /* CreateOrderViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A482EF572BFBA0D6004B129B /* CreateOrderViewController+UI.swift */; };
+		A49813612C00ED0900D42DD7 /* ShowOrderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A498135B2C00ED0900D42DD7 /* ShowOrderPresenter.swift */; };
+		A49813622C00ED0900D42DD7 /* ShowOrderWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A498135C2C00ED0900D42DD7 /* ShowOrderWorker.swift */; };
+		A49813632C00ED0900D42DD7 /* ShowOrderRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A498135D2C00ED0900D42DD7 /* ShowOrderRouter.swift */; };
+		A49813642C00ED0900D42DD7 /* ShowOrderModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A498135E2C00ED0900D42DD7 /* ShowOrderModels.swift */; };
+		A49813652C00ED0900D42DD7 /* ShowOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A498135F2C00ED0900D42DD7 /* ShowOrderViewController.swift */; };
+		A49813662C00ED0900D42DD7 /* ShowOrderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49813602C00ED0900D42DD7 /* ShowOrderInteractor.swift */; };
 		A4C16D7D2BFA74C800E799BC /* DatePicker+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4C16D7C2BFA74C800E799BC /* DatePicker+Protocol.swift */; };
 		A4EA073B2BC2EAF9008D52B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA073A2BC2EAF9008D52B2 /* AppDelegate.swift */; };
 		A4EA073D2BC2EAF9008D52B2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA073C2BC2EAF9008D52B2 /* SceneDelegate.swift */; };
@@ -67,11 +71,15 @@
 		A42D3A4C2BFC831C00B3F86F /* ListOrderModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOrderModels.swift; sourceTree = "<group>"; };
 		A42D3A4D2BFC831C00B3F86F /* ListOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOrderViewController.swift; sourceTree = "<group>"; };
 		A42D3A4E2BFC831C00B3F86F /* ListOrderInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOrderInteractor.swift; sourceTree = "<group>"; };
-		A42D3A9F2BFCA31E00B3F86F /* ListOrderViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListOrderViewController+UI.swift"; sourceTree = "<group>"; };
 		A42D3AA52BFCB08400B3F86F /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		A42D3AAA2BFD1BF400B3F86F /* OrderMockWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMockWorker.swift; sourceTree = "<group>"; };
 		A45ACBDE2BF4BC310012EF19 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		A482EF572BFBA0D6004B129B /* CreateOrderViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateOrderViewController+UI.swift"; sourceTree = "<group>"; };
+		A498135B2C00ED0900D42DD7 /* ShowOrderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowOrderPresenter.swift; sourceTree = "<group>"; };
+		A498135C2C00ED0900D42DD7 /* ShowOrderWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowOrderWorker.swift; sourceTree = "<group>"; };
+		A498135D2C00ED0900D42DD7 /* ShowOrderRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowOrderRouter.swift; sourceTree = "<group>"; };
+		A498135E2C00ED0900D42DD7 /* ShowOrderModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowOrderModels.swift; sourceTree = "<group>"; };
+		A498135F2C00ED0900D42DD7 /* ShowOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowOrderViewController.swift; sourceTree = "<group>"; };
+		A49813602C00ED0900D42DD7 /* ShowOrderInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowOrderInteractor.swift; sourceTree = "<group>"; };
 		A4C16D7C2BFA74C800E799BC /* DatePicker+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DatePicker+Protocol.swift"; sourceTree = "<group>"; };
 		A4EA07372BC2EAF9008D52B2 /* CleanSwiftTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanSwiftTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4EA073A2BC2EAF9008D52B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -123,7 +131,6 @@
 		A41898722BF29D29002511D9 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				A482EF542BFBA0A1004B129B /* CreateOrderViewController+UI */,
 				A4F33F472BF66C1500EEE85E /* CreateOrderTextField */,
 				A41898732BF29D3B002511D9 /* CreateOrderTableViewCell */,
 			);
@@ -154,14 +161,6 @@
 			path = ListOrderTableViewCell;
 			sourceTree = "<group>";
 		};
-		A425950B2BFE54A60067D402 /* ListOrderViewController+UI */ = {
-			isa = PBXGroup;
-			children = (
-				A42D3A9F2BFCA31E00B3F86F /* ListOrderViewController+UI.swift */,
-			);
-			path = "ListOrderViewController+UI";
-			sourceTree = "<group>";
-		};
 		A425950F2BFE79570067D402 /* GenerateCreateOrderForm */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,7 +186,6 @@
 		A42D3A9E2BFCA30B00B3F86F /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				A425950B2BFE54A60067D402 /* ListOrderViewController+UI */,
 				A425950A2BFE54940067D402 /* ListOrderTableViewCell */,
 			);
 			path = UI;
@@ -218,12 +216,17 @@
 			path = Order;
 			sourceTree = "<group>";
 		};
-		A482EF542BFBA0A1004B129B /* CreateOrderViewController+UI */ = {
+		A498135A2C00ECDC00D42DD7 /* ShowOrder */ = {
 			isa = PBXGroup;
 			children = (
-				A482EF572BFBA0D6004B129B /* CreateOrderViewController+UI.swift */,
+				A498135B2C00ED0900D42DD7 /* ShowOrderPresenter.swift */,
+				A498135C2C00ED0900D42DD7 /* ShowOrderWorker.swift */,
+				A498135D2C00ED0900D42DD7 /* ShowOrderRouter.swift */,
+				A498135E2C00ED0900D42DD7 /* ShowOrderModels.swift */,
+				A498135F2C00ED0900D42DD7 /* ShowOrderViewController.swift */,
+				A49813602C00ED0900D42DD7 /* ShowOrderInteractor.swift */,
 			);
-			path = "CreateOrderViewController+UI";
+			path = ShowOrder;
 			sourceTree = "<group>";
 		};
 		A4C16D7B2BFA743C00E799BC /* Protocols */ = {
@@ -290,6 +293,7 @@
 		A4EA076A2BC2EBC0008D52B2 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				A498135A2C00ECDC00D42DD7 /* ShowOrder */,
 				A42D3A482BFC82AC00B3F86F /* ListOrder */,
 				A4EA076B2BC2EBC8008D52B2 /* CreateOrder */,
 			);
@@ -502,12 +506,16 @@
 				A4EA073B2BC2EAF9008D52B2 /* AppDelegate.swift in Sources */,
 				A4EA073D2BC2EAF9008D52B2 /* SceneDelegate.swift in Sources */,
 				A425950D2BFE57F60067D402 /* ListOrderTableViewCell.swift in Sources */,
-				A482EF582BFBA0D6004B129B /* CreateOrderViewController+UI.swift in Sources */,
+				A49813612C00ED0900D42DD7 /* ShowOrderPresenter.swift in Sources */,
+				A49813622C00ED0900D42DD7 /* ShowOrderWorker.swift in Sources */,
+				A49813632C00ED0900D42DD7 /* ShowOrderRouter.swift in Sources */,
+				A49813642C00ED0900D42DD7 /* ShowOrderModels.swift in Sources */,
+				A49813652C00ED0900D42DD7 /* ShowOrderViewController.swift in Sources */,
+				A49813662C00ED0900D42DD7 /* ShowOrderInteractor.swift in Sources */,
 				A4F33F442BF6690900EEE85E /* Array+Extension.swift in Sources */,
 				A42595112BFE79710067D402 /* GenerateCreateOrderFormWorker.swift in Sources */,
 				A4C16D7D2BFA74C800E799BC /* DatePicker+Protocol.swift in Sources */,
 				A45ACBDF2BF4BC310012EF19 /* Constants.swift in Sources */,
-				A42D3AA02BFCA31E00B3F86F /* ListOrderViewController+UI.swift in Sources */,
 				A4F33F402BF6396100EEE85E /* UITableView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

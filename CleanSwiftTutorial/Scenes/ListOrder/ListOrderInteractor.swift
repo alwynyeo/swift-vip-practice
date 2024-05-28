@@ -13,7 +13,7 @@ protocol ListOrderBusinessLogic {
 
 // MARK: - ListOrderDataStore Protocol
 protocol ListOrderDataStore {
-    //  var name: String { get set }
+    var orders: [Order] { get }
 }
 
 // MARK: - ListOrderInteractor Class
@@ -23,6 +23,8 @@ final class ListOrderInteractor {
     var presenter: ListOrderPresentationLogic?
 
     let worker: ListOrderWorker
+
+    var orders: [Order] = []
 
     // MARK: - Object Lifecycle
 
@@ -36,6 +38,7 @@ final class ListOrderInteractor {
     private func handleGetOrders() {
         do {
             let orders = try worker.getOrders()
+            self.orders = orders
             presentOrders(orders: orders)
         } catch ListOrderError.unableToGet {
             print("Unable to get orders")

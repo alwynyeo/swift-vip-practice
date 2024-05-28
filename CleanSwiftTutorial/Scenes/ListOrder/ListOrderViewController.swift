@@ -63,8 +63,7 @@ final class ListOrderViewController: UITableViewController {
     // MARK: - Override Parent Methods
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let item = dataSource.itemIdentifier(for: indexPath) else { return }
-        print(item.totalPrice)
+        router?.routeToShowOrder()
     }
 
     // MARK: - Setup
@@ -140,5 +139,36 @@ extension ListOrderViewController: ListOrderDisplayLogic {
     func displayOrders(viewModel: ListOrder.GetOrders.ViewModel) {
         let orders = viewModel.orders
         updateOrders(orders: orders)
+    }
+}
+
+// MARK: - Programmatic UI Configuration
+private extension ListOrderViewController {
+    func configureUI() {
+        configureNavigationBar()
+        configureTableView()
+    }
+
+    func configureNavigationBar() {
+        let primaryAction = UIAction(
+            handler: { [weak self] action in
+                guard let self else { return }
+                router?.routeToCreateOrder()
+            }
+        )
+
+        let plusIcon = UIImage(systemName: "plus")
+
+        let rightBarButtonItem = UIBarButtonItem(
+            image: plusIcon,
+            primaryAction: primaryAction
+        )
+
+        navigationItem.title = "List Order"
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+    }
+
+    func configureTableView() {
+        tableView.register(ListOrderTableViewCell.self, forCellReuseIdentifier: ListOrderTableViewCell.cellId)
     }
 }

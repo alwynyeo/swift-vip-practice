@@ -20,7 +20,7 @@ final class CreateOrderViewController: UITableViewController {
 
     private var interactor: CreateOrderBusinessLogic?
 
-    private var router: (CreateOrderRoutingLogic & CreateOrderDataPassing)?
+    var router: (CreateOrderRoutingLogic & CreateOrderDataPassing)?
     
     private enum Section: String, CaseIterable {
         case customerContactInfo = "Customer Contact Info"
@@ -297,5 +297,22 @@ extension CreateOrderViewController: DatePickerDelegate {
     func datePickerValueChanged(_ datePicker: UIDatePicker) {
         let date = datePicker.date
         formatExpirationDate(date: date)
+    }
+}
+
+// MARK: - Programmatic UI Configuration
+private extension CreateOrderViewController {
+    func configureUI() {
+        configureNavigationBar()
+        configureTableView()
+    }
+
+    func configureNavigationBar() {
+        navigationItem.title = "Create Order"
+    }
+
+    func configureTableView() {
+        tableView.sectionHeaderTopPadding = 0
+        tableView.register(CreateOrderTableViewCell.self, forCellReuseIdentifier: CreateOrderTableViewCell.cellId)
     }
 }

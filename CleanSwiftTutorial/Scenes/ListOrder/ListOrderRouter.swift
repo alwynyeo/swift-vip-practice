@@ -8,7 +8,8 @@
 
 // MARK: - ListOrderRoutingLogic Protocol
 protocol ListOrderRoutingLogic {
-    //  func routeToSomewhere(segue: UIStoryboardSegue?)
+    func routeToCreateOrder()
+    func routeToShowOrder()
 }
 
 // MARK: - ListOrderDataPassing Protocol
@@ -21,36 +22,45 @@ final class ListOrderRouter {
     // MARK: - Declarations
     
     weak var viewController: ListOrderViewController?
+    
     var dataStore: ListOrderDataStore?
-
-    // MARK: - Navigation
-
-//    func navigateToSomewhere(source: ListOrderViewController, destination: SomewhereViewController) {
-//        source.show(destination, sender: nil)
-//    }
 
     // MARK: - Passing Data
 
-//    func passDataToSomewhere(source: ListOrderDataStore, destination: inout SomewhereDataStore) {
-//        destination.name = source.name
-//    }
+    func passDataToCreateOrder(source: ListOrderDataStore, destination: inout CreateOrderDataStore) {}
+
+    func passDataToShowOrder(source: ListOrderDataStore, destination: inout ShowOrderDataStore) {
+        guard let selectedRow = viewController?.tableView.indexPathForSelectedRow?.row else { return }
+        let selectedOrder = source.orders[selectedRow]
+        destination.order = selectedOrder
+    }
+
+    // MARK: - Navigation
+
+    func navigateToCreateOrder(source: ListOrderViewController, destination: CreateOrderViewController) {
+        source.show(destination, sender: nil)
+    }
+
+    func navigateToShowOrder(source: ListOrderViewController, destination: ShowOrderViewController) {
+        source.show(destination, sender: nil)
+    }
 }
 
 // MARK: - ListOrderRoutingLogic Extension
 extension ListOrderRouter: ListOrderRoutingLogic {
-//    func routeToSomewhere(segue: UIStoryboardSegue?) {
-//        if let segue = segue {
-//            let destinationVC = segue.destination as! SomewhereViewController
-//            var destinationDS = destinationVC.router!.dataStore!
-//            passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-//        } else {
-//            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//            let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-//            var destinationDS = destinationVC.router!.dataStore!
-//            passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-//            navigateToSomewhere(source: viewController!, destination: destinationVC)
-//        }
-//    }
+    func routeToCreateOrder() {
+        let destinationViewController = CreateOrderViewController(nibName: nil, bundle: nil)
+        var destinationDataStore = destinationViewController.router!.dataStore!
+        passDataToCreateOrder(source: dataStore!, destination: &destinationDataStore)
+        navigateToCreateOrder(source: viewController!, destination: destinationViewController)
+    }
+
+    func routeToShowOrder() {
+        let destinationViewController = ShowOrderViewController(nibName: nil, bundle: nil)
+        var destinationDataStore = destinationViewController.router!.dataStore!
+        passDataToShowOrder(source: dataStore!, destination: &destinationDataStore)
+        navigateToShowOrder(source: viewController!, destination: destinationViewController)
+    }
 }
 
 // MARK: - ListOrderDataPassing Extension
