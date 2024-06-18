@@ -12,37 +12,37 @@ final class GenerateCreateOrderFormWorker: GenerateCreateOrderFormProtocol {
     // MARK: - Data
 
     private let contactInformations: [CreateOrder.GenerateForm.Form] = [
-        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: "First Name", inputType: .textField, inputTag: 1),
-        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: "Last Name", inputType: .textField, inputTag: 2),
-        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: "Phone", inputType: .textField, inputTag: 3),
-        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: "Email", inputType: .textField, inputTag: 4),
+        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: CreateOrder.GenerateForm.Form.Title.firstName, inputType: .textField, inputTag: 1),
+        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: CreateOrder.GenerateForm.Form.Title.lastName, inputType: .textField, inputTag: 2),
+        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: CreateOrder.GenerateForm.Form.Title.phone, inputType: .textField, inputTag: 3),
+        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: CreateOrder.GenerateForm.Form.Title.email, inputType: .textField, inputTag: 4),
     ]
 
     private let shipmentAddresses: [CreateOrder.GenerateForm.Form] = [
-        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: "Street1", inputType: .textField, inputTag: 5),
-        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: "Street2", inputType: .textField, inputTag: 6),
-        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: "City", inputType: .textField, inputTag: 7),
-        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: "State", inputType: .textField, inputTag: 8),
-        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: "Zip", inputType: .textField, inputTag: 9),
+        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: CreateOrder.GenerateForm.Form.Title.shipmentAddressStreet1, inputType: .textField, inputTag: 5),
+        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: CreateOrder.GenerateForm.Form.Title.shipmentAddressStreet2, inputType: .textField, inputTag: 6),
+        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: CreateOrder.GenerateForm.Form.Title.shipmentAddressCity, inputType: .textField, inputTag: 7),
+        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: CreateOrder.GenerateForm.Form.Title.shipmentAddressState, inputType: .textField, inputTag: 8),
+        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: CreateOrder.GenerateForm.Form.Title.shipmentAddressZip, inputType: .textField, inputTag: 9),
     ]
 
     private let shipmentMethods: [CreateOrder.GenerateForm.Form] = [
-        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: "Shipping Speed", inputType: .pickerView),
+        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: CreateOrder.GenerateForm.Form.Title.shipmentMethod, inputType: .pickerView),
     ]
 
     private let paymentInformations: [CreateOrder.GenerateForm.Form] = [
-        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: "Credit Card Number", inputType: .textField, inputTag: 10),
-        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: "Expiration Date", inputType: .datePicker),
-        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: "CVV", inputType: .textField, inputTag: 11),
+        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: CreateOrder.GenerateForm.Form.Title.creditCard, inputType: .textField, inputTag: 10),
+        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: CreateOrder.GenerateForm.Form.Title.expirationDate, inputType: .datePicker),
+        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: CreateOrder.GenerateForm.Form.Title.cvv, inputType: .textField, inputTag: 11),
     ]
 
     private let billingAddresses: [CreateOrder.GenerateForm.Form] = [
-        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: "Same As Shipping Address", inputType: .switchToggle),
-        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: "Street1", inputType: .textField, inputTag: 12),
-        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: "Street2", inputType: .textField, inputTag: 13),
-        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: "City", inputType: .textField, inputTag: 14),
-        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: "State", inputType: .textField, inputTag: 15),
-        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: "Zip", inputType: .textField, inputTag: 16),
+        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: CreateOrder.GenerateForm.Form.Title.isSameAsShippingAddress, inputType: .switchToggle),
+        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: CreateOrder.GenerateForm.Form.Title.billingAddressStreet1, inputType: .textField, inputTag: 12),
+        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: CreateOrder.GenerateForm.Form.Title.billingAddressStreet2, inputType: .textField, inputTag: 13),
+        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: CreateOrder.GenerateForm.Form.Title.billingAddressCity, inputType: .textField, inputTag: 14),
+        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: CreateOrder.GenerateForm.Form.Title.billingAddressState, inputType: .textField, inputTag: 15),
+        CreateOrder.GenerateForm.Form(id: UUID().uuidString, title: CreateOrder.GenerateForm.Form.Title.billingAddressZip, inputType: .textField, inputTag: 16),
     ]
 
     // MARK: - Operations

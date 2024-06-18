@@ -26,13 +26,13 @@ final class ShowOrderRouter {
 
     // MARK: - Passing Data
 
-    func passDataToEditOrder(source: ShowOrderDataStore, destination: inout CreateOrderDataStore) {
+    private func passDataToEditOrder(source: ShowOrderDataStore, destination: inout CreateOrderDataStore) {
         destination.existingOrder = source.order
     }
 
     // MARK: - Navigation
 
-    func navigateToEditOrder(source: ShowOrderViewController, destination: CreateOrderViewController) {
+    private func navigateToEditOrder(source: ShowOrderViewController, destination: CreateOrderViewController) {
         source.show(destination, sender: nil)
     }
 }

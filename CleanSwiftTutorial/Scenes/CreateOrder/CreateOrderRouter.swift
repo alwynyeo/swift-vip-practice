@@ -23,13 +23,13 @@ final class CreateOrderRouter {
 
     // MARK: - Navigation
 
-//    func navigateToSomewhere(source: CreateOrderViewController, destination: SomewhereViewController) {
+//    private func navigateToSomewhere(source: CreateOrderViewController, destination: SomewhereViewController) {
 //        source.show(destination, sender: nil)
 //    }
 
     // MARK: - Passing Data
 
-//    func passDataToSomewhere(source: CreateOrderDataStore, destination: inout SomewhereDataStore) {
+//    private  func passDataToSomewhere(source: CreateOrderDataStore, destination: inout SomewhereDataStore) {
 //        destination.name = source.name
 //    }
 }

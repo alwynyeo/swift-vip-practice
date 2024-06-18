@@ -207,8 +207,10 @@ private extension ShowOrderViewController {
             }
         )
 
+        let rightBarButtonItemTitle = "Edit Order"
+
         let rightBarButtonItem = UIBarButtonItem(
-            title: "Edit Order",
+            title: rightBarButtonItemTitle,
             primaryAction: primaryAction
         )
 

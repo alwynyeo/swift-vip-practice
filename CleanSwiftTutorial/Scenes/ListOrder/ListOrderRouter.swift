@@ -27,9 +27,9 @@ final class ListOrderRouter {
 
     // MARK: - Passing Data
 
-    func passDataToCreateOrder(source: ListOrderDataStore, destination: inout CreateOrderDataStore) {}
+    private func passDataToCreateOrder(source: ListOrderDataStore, destination: inout CreateOrderDataStore) {}
 
-    func passDataToShowOrder(source: ListOrderDataStore, destination: inout ShowOrderDataStore) {
+    private func passDataToShowOrder(source: ListOrderDataStore, destination: inout ShowOrderDataStore) {
         guard let selectedRow = viewController?.tableView.indexPathForSelectedRow?.row else { return }
         let selectedOrder = source.orders[selectedRow]
         destination.order = selectedOrder
@@ -37,11 +37,11 @@ final class ListOrderRouter {
 
     // MARK: - Navigation
 
-    func navigateToCreateOrder(source: ListOrderViewController, destination: CreateOrderViewController) {
+    private func navigateToCreateOrder(source: ListOrderViewController, destination: CreateOrderViewController) {
         source.show(destination, sender: nil)
     }
 
-    func navigateToShowOrder(source: ListOrderViewController, destination: ShowOrderViewController) {
+    private func navigateToShowOrder(source: ListOrderViewController, destination: ShowOrderViewController) {
         source.show(destination, sender: nil)
     }
 }

@@ -18,6 +18,8 @@
 		A42D3A542BFC831C00B3F86F /* ListOrderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D3A4E2BFC831C00B3F86F /* ListOrderInteractor.swift */; };
 		A42D3AA62BFCB08400B3F86F /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D3AA52BFCB08400B3F86F /* Order.swift */; };
 		A42D3AAB2BFD1BF400B3F86F /* OrderMockWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42D3AAA2BFD1BF400B3F86F /* OrderMockWorker.swift */; };
+		A43991372C07AE1400A21401 /* TextField+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43991362C07AE1400A21401 /* TextField+Protocol.swift */; };
+		A439913A2C07AF2F00A21401 /* UITextField+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A43991392C07AF2F00A21401 /* UITextField+Extension.swift */; };
 		A45ACBDF2BF4BC310012EF19 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A45ACBDE2BF4BC310012EF19 /* Constants.swift */; };
 		A49813612C00ED0900D42DD7 /* ShowOrderPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A498135B2C00ED0900D42DD7 /* ShowOrderPresenter.swift */; };
 		A49813622C00ED0900D42DD7 /* ShowOrderWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A498135C2C00ED0900D42DD7 /* ShowOrderWorker.swift */; };
@@ -40,7 +42,7 @@
 		A4EA07B22BC2EE5B008D52B2 /* CreateOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA07AC2BC2EE5B008D52B2 /* CreateOrderViewController.swift */; };
 		A4EA07B32BC2EE5B008D52B2 /* CreateOrderInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EA07AD2BC2EE5B008D52B2 /* CreateOrderInteractor.swift */; };
 		A4F33F402BF6396100EEE85E /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33F3F2BF6396100EEE85E /* UITableView+Extension.swift */; };
-		A4F33F442BF6690900EEE85E /* Array+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33F432BF6690900EEE85E /* Array+Extension.swift */; };
+		A4F33F442BF6690900EEE85E /* Array+Comparable+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33F432BF6690900EEE85E /* Array+Comparable+Extension.swift */; };
 		A4F33F462BF66C1100EEE85E /* CreateOrderTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4F33F452BF66C1100EEE85E /* CreateOrderTextField.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +65,7 @@
 
 /* Begin PBXFileReference section */
 		A41898742BF29D65002511D9 /* CreateOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrderTableViewCell.swift; sourceTree = "<group>"; };
+		A41C65C62C21AA8A00297CD0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A425950C2BFE57F60067D402 /* ListOrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOrderTableViewCell.swift; sourceTree = "<group>"; };
 		A42595102BFE79710067D402 /* GenerateCreateOrderFormWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateCreateOrderFormWorker.swift; sourceTree = "<group>"; };
 		A42D3A492BFC831C00B3F86F /* ListOrderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOrderPresenter.swift; sourceTree = "<group>"; };
@@ -73,6 +76,8 @@
 		A42D3A4E2BFC831C00B3F86F /* ListOrderInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOrderInteractor.swift; sourceTree = "<group>"; };
 		A42D3AA52BFCB08400B3F86F /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		A42D3AAA2BFD1BF400B3F86F /* OrderMockWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderMockWorker.swift; sourceTree = "<group>"; };
+		A43991362C07AE1400A21401 /* TextField+Protocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField+Protocol.swift"; sourceTree = "<group>"; };
+		A43991392C07AF2F00A21401 /* UITextField+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extension.swift"; sourceTree = "<group>"; };
 		A45ACBDE2BF4BC310012EF19 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A498135B2C00ED0900D42DD7 /* ShowOrderPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowOrderPresenter.swift; sourceTree = "<group>"; };
 		A498135C2C00ED0900D42DD7 /* ShowOrderWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowOrderWorker.swift; sourceTree = "<group>"; };
@@ -99,7 +104,7 @@
 		A4EA07AC2BC2EE5B008D52B2 /* CreateOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrderViewController.swift; sourceTree = "<group>"; };
 		A4EA07AD2BC2EE5B008D52B2 /* CreateOrderInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrderInteractor.swift; sourceTree = "<group>"; };
 		A4F33F3F2BF6396100EEE85E /* UITableView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
-		A4F33F432BF6690900EEE85E /* Array+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Extension.swift"; sourceTree = "<group>"; };
+		A4F33F432BF6690900EEE85E /* Array+Comparable+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Comparable+Extension.swift"; sourceTree = "<group>"; };
 		A4F33F452BF66C1100EEE85E /* CreateOrderTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateOrderTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -216,6 +221,14 @@
 			path = Order;
 			sourceTree = "<group>";
 		};
+		A439913B2C07B48E00A21401 /* Array */ = {
+			isa = PBXGroup;
+			children = (
+				A4F33F432BF6690900EEE85E /* Array+Comparable+Extension.swift */,
+			);
+			path = Array;
+			sourceTree = "<group>";
+		};
 		A498135A2C00ECDC00D42DD7 /* ShowOrder */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				A4C16D7C2BFA74C800E799BC /* DatePicker+Protocol.swift */,
+				A43991362C07AE1400A21401 /* TextField+Protocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -240,6 +254,7 @@
 		A4EA072E2BC2EAF9008D52B2 = {
 			isa = PBXGroup;
 			children = (
+				A41C65C62C21AA8A00297CD0 /* README.md */,
 				A4EA07392BC2EAF9008D52B2 /* CleanSwiftTutorial */,
 				A4EA07502BC2EAFC008D52B2 /* CleanSwiftTutorialTests */,
 				A4EA075A2BC2EAFC008D52B2 /* CleanSwiftTutorialUITests */,
@@ -337,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				A4F33F3F2BF6396100EEE85E /* UITableView+Extension.swift */,
+				A43991392C07AF2F00A21401 /* UITextField+Extension.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -344,7 +360,7 @@
 		A4F33F422BF668F300EEE85E /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				A4F33F432BF6690900EEE85E /* Array+Extension.swift */,
+				A439913B2C07B48E00A21401 /* Array */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -492,6 +508,7 @@
 				A4EA07AF2BC2EE5B008D52B2 /* CreateOrderWorker.swift in Sources */,
 				A4EA07B02BC2EE5B008D52B2 /* CreateOrderRouter.swift in Sources */,
 				A4F33F462BF66C1100EEE85E /* CreateOrderTextField.swift in Sources */,
+				A439913A2C07AF2F00A21401 /* UITextField+Extension.swift in Sources */,
 				A4EA07B12BC2EE5B008D52B2 /* CreateOrderModels.swift in Sources */,
 				A4EA07B22BC2EE5B008D52B2 /* CreateOrderViewController.swift in Sources */,
 				A4EA07B32BC2EE5B008D52B2 /* CreateOrderInteractor.swift in Sources */,
@@ -506,13 +523,14 @@
 				A4EA073B2BC2EAF9008D52B2 /* AppDelegate.swift in Sources */,
 				A4EA073D2BC2EAF9008D52B2 /* SceneDelegate.swift in Sources */,
 				A425950D2BFE57F60067D402 /* ListOrderTableViewCell.swift in Sources */,
+				A43991372C07AE1400A21401 /* TextField+Protocol.swift in Sources */,
 				A49813612C00ED0900D42DD7 /* ShowOrderPresenter.swift in Sources */,
 				A49813622C00ED0900D42DD7 /* ShowOrderWorker.swift in Sources */,
 				A49813632C00ED0900D42DD7 /* ShowOrderRouter.swift in Sources */,
 				A49813642C00ED0900D42DD7 /* ShowOrderModels.swift in Sources */,
 				A49813652C00ED0900D42DD7 /* ShowOrderViewController.swift in Sources */,
 				A49813662C00ED0900D42DD7 /* ShowOrderInteractor.swift in Sources */,
-				A4F33F442BF6690900EEE85E /* Array+Extension.swift in Sources */,
+				A4F33F442BF6690900EEE85E /* Array+Comparable+Extension.swift in Sources */,
 				A42595112BFE79710067D402 /* GenerateCreateOrderFormWorker.swift in Sources */,
 				A4C16D7D2BFA74C800E799BC /* DatePicker+Protocol.swift in Sources */,
 				A45ACBDF2BF4BC310012EF19 /* Constants.swift in Sources */,

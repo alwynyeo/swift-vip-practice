@@ -60,11 +60,13 @@ final class CreateOrderViewController: UITableViewController {
     override func loadView() {
         super.loadView()
         configureUI()
+        generateForms()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        generateForms()
+
+//        print("Existing Order::", router?.dataStore?.existingOrder)
     }
 
     deinit {
@@ -182,7 +184,8 @@ final class CreateOrderViewController: UITableViewController {
                     for: viewModel,
                     textFieldDelegate: self,
                     pickerViewDelegate: self,
-                    datePickerDelegate: self
+                    datePickerDelegate: self,
+                    customTextFieldDelegate: self
                 )
 
                 return cell
@@ -231,6 +234,14 @@ final class CreateOrderViewController: UITableViewController {
             }
         }
     }
+
+    private func handleCreateOrderButton() {
+        let firstName = textFields[0].text
+        let lastName = textFields[1].text
+
+        print("Create Order::", firstName, lastName)
+//        let form = CreateOrder.CreateOrderFormField(firstName: <#T##String#>, lastName: <#T##String#>, phone: <#T##String#>, email: <#T##String#>, paymentMethodCreditCardNumber: <#T##String#>, paymentMethodCVV: <#T##String#>, paymentMethodExpirationDate: <#T##Date#>, paymentMethodExpirationDateString: <#T##String#>, billingAddressStreet1: <#T##String#>, billingAddressStreet2: <#T##String#>, billingAddressCity: <#T##String#>, billingAddressState: <#T##String#>, billingAddressZIP: <#T##String#>, shipmentAddressStreet1: <#T##String#>, shipmentAddressCity: <#T##String#>, shipmentAddressState: <#T##String#>, shipmentAddressZIP: <#T##String#>, shipmentMethodSpeed: <#T##Int#>, shipmentMethodSpeedString: <#T##String#>, date: <#T##Date#>, total: <#T##Decimal#>)
+    }
 }
 
 // MARK: - CreateOrderDisplayLogic Extension
@@ -267,6 +278,14 @@ extension CreateOrderViewController: UITextFieldDelegate {
         let textField = textField as! CreateOrderTextField
         handleKeyboardResponder(for: textField)
         return true
+    }
+}
+
+// MARK: - TextFieldDelegate
+extension CreateOrderViewController: TextFieldDelegate {
+    func textFieldDidChange(_ textField: UITextField) {
+        guard let textField = textField as? CreateOrderTextField else { return }
+        
     }
 }
 
@@ -308,7 +327,22 @@ private extension CreateOrderViewController {
     }
 
     func configureNavigationBar() {
+        let primaryAction = UIAction(
+            handler: { [weak self] action in
+                guard let self else { return }
+                handleCreateOrderButton()
+            }
+        )
+
+        let title = "Create"
+
+        let rightBarButtonItem = UIBarButtonItem(
+            title: title,
+            primaryAction: primaryAction
+        )
+
         navigationItem.title = "Create Order"
+        navigationItem.rightBarButtonItem = rightBarButtonItem
     }
 
     func configureTableView() {

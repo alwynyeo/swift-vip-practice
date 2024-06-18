@@ -1,5 +1,5 @@
 //
-//  Array+Extension.swift
+//  Array+Comparable+Extension.swift
 //  CleanSwiftTutorial
 //
 //  Created by Alwyn Yeo on 5/17/24.
